@@ -1,7 +1,7 @@
 import mongoose from 'mongoose';
 
 const Barang = mongoose.Schema({
-    namaBarang:{
+    namabarang:{
         type:String,
         required: true
     },
@@ -21,11 +21,6 @@ const Barang = mongoose.Schema({
         type:Number,
         required: true
     },
-    // gambar:{
-    //     type:String,
-    //     required: true
-    // },
-    
 });
 
 export default mongoose.model("Barang",Barang)
