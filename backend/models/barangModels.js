@@ -1,0 +1,31 @@
+import mongoose from 'mongoose';
+
+const Barang = mongoose.Schema({
+    namaBarang:{
+        type:String,
+        required: true
+    },
+    deskripsi:{
+        type:String,
+        required: true
+    },
+    jumlah:{
+        type:Number,
+        required: true
+    },
+    harga:{
+        type:Number,
+        required: true
+    },
+    discount:{
+        type:Number,
+        required: true
+    },
+    // gambar:{
+    //     type:String,
+    //     required: true
+    // },
+    
+});
+
+export default mongoose.model("Barang",Barang)

@@ -1,0 +1,11 @@
+POST http://localhost:5000/barang 
+Content-Type: application/json
+
+{
+    "namaBarang": "tai", 
+    "deskripsi": "ini barang mahal", 
+    "jumlah": 20,
+    "harga": 20000,
+    "discount": 10,
+
+}
