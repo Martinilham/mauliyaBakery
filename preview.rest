@@ -9,3 +9,15 @@ Content-Type: application/json
     "harga" : 2000,
     "discount" : 10
 }
+
+POST http://localhost:5000/user 
+Content-Type: application/json
+
+{
+    "nama": "martin",
+    "email": "martin@gmail.com",
+    "status": "client",
+    "alamat": "payaman",
+    "notlpn": "08951271261",
+    "password": "wer1234ui"
+}

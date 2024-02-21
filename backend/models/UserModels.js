@@ -1,3 +1,4 @@
+import mongoose from "mongoose";
 const User = mongoose.Schema({
     nama:{
         type:String,
@@ -25,4 +26,4 @@ const User = mongoose.Schema({
 
 });
 
-export default mongoose.model("Barang",Barang)
+export default mongoose.model("User",User)
