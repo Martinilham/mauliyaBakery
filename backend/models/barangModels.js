@@ -9,6 +9,10 @@ const Barang = mongoose.Schema({
         type:String,
         required: true
     },
+    kategori:{
+        type:Number,
+        required: true
+    },
     jumlah:{
         type:Number,
         required: true

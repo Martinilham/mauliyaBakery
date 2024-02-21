@@ -11,6 +11,9 @@ const User = mongoose.Schema({
         type:String,
         required:true
     },
+    alamat:{
+        type:String,
+    },
     notlpn: {
         type:String,
         required:true

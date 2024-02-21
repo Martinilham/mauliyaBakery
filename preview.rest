@@ -4,6 +4,7 @@ Content-Type: application/json
 {
     "namabarang" : "roti salju",
     "deskripsi" :"roti kering",
+    "kategori" : "roti kering",
     "jumlah" : 20,
     "harga" : 2000,
     "discount" : 10
