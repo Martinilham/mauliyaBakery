@@ -3,7 +3,7 @@ import User from "../models/UserModels.js";
 export const getUser = async (req, res) => {
     try {
         const user = await User.find();
-        res.json(barang);
+        res.json(user);
     } catch (error) {
         res.status(500).json({message: error.message});
     }
