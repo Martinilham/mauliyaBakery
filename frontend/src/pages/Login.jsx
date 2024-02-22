@@ -4,8 +4,7 @@ import App from '../App';
 const Login = () => {
   return (
     <div>
-        <Link to={<App/>}>masuk oi</Link>
-        <a href={<App/>}></a>
+        <a href="/dashboard">masuk</a>
         <h1>kenek pora</h1>
     </div>
   )

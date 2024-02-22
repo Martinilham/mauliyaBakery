@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch,Routes } from 'react-router-dom';
 import Box from "@mui/material/Box";
 import Sidebar from "./components/common/Sidebar";
 import Dashboard from "./pages/Dashboard";
@@ -24,6 +24,49 @@ import {
   Transactions,
 } from "./pages";
 import Footer from "./components/common/Footer";
+
+// const router = createBrowserRouter([
+//   {
+//     path:"/dashboard/",
+//     element:<Dashboard/>
+//   },
+//   {
+//     path:"/dashboard/products",
+//     element:<Products />
+//   },
+//   {
+//     path:"/dashboard/products/add",
+//     element:<AddProduct />
+//   },
+//   {
+//     path:"/dashboard/products/:id",
+//     element:<SingleProduct />
+//   },
+//   {
+//     path:"/dashboard/products/categories",
+//     element:<ProductCategories />
+//   },
+//   {
+//     path:"/dashboard/customers",
+//     element:<Customers />
+//   },
+//   {
+//     path:"/dashboard/customers/:id",
+//     element:<SingleCustomer />
+//   },
+//   {
+//     path:"/dashboard/sales/analysis",
+//     element:<SalesAnalytics />
+//   },
+//   {
+//     path:"/dashboard/sales",
+//     element:<ProductSales />
+//   },
+//   {
+//     path:"/dashboard/orders",
+//     element:<Orders />
+//   }
+// ])
 
 const sideBarWidth = 250;
 
@@ -53,28 +96,34 @@ function App() {
           width: { xs: "100%", md: `calc(100% - ${sideBarWidth}px)` },
         }}
       >
+        {/* <React.StrictMode>
+          <RouterProvider router={router} />
+        </React.StrictMode> */}
         {/* Routes */}
         <Routes>
+          
           <Route path="/" element={<Dashboard />} />
           <Route path="/products" element={<Products />} />
-          <Route path="/products/add" element={<AddProduct />} />
-          <Route path="/products/:id" element={<SingleProduct />} />
-          <Route path="/products/categories" element={<ProductCategories />} />
-          <Route path="/customers" element={<Customers />} />
-          <Route path="/customers/:id" element={<SingleCustomer />} />
-          <Route path="/sales/analysis" element={<SalesAnalytics />} />
-          <Route path="/sales" element={<ProductSales />} />
-          <Route path="/orders" element={<Orders />} />
-          <Route path="/orders/template" element={<OrderTemplate />} />
-          <Route path="/orders/:id" element={<SingleOrder />} />
-          <Route path="/suppliers" element={<Suppliers />} />
-          <Route path="/transactions" element={<Transactions />} />
-          <Route path="/brands" element={<Brands />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/reviews" element={<Reviews />} />
-          <Route path="/inbox" element={<Inbox />} />
+          <Route path="/dashboard/products/add" component={<AddProduct />} />
+          <Route path="/dashboard/products/:id" component={<SingleProduct />} />
+          <Route path="/dashboard/products/categories" component={<ProductCategories />} />
+          <Route path="/dashboard/customers" component={<Customers />} />
+          <Route path="/dashboard/customers/:id" component={<SingleCustomer />} />
+          <Route path="/dashboard/sales/analysis" component={<SalesAnalytics />} />
+          <Route path="/dashboard/sales" component={<ProductSales />} />
+          <Route path="/dashboard/orders" component={<Orders />} />
+          <Route path="/dashboard/orders/template" component={<OrderTemplate />} />
+          <Route path="/dashboard/orders/:id" component={<SingleOrder />} />
+          <Route path="/dashboard/suppliers" component={<Suppliers />} />
+          <Route path="/dashboard/transactions" component={<Transactions />} />
+          <Route path="/dashboard/brands" component={<Brands />} />
+          <Route path="/dashboard/reviews" component={<Reviews />} />
+          <Route path="/dashboard/settings" component={<Settings />} />
+          <Route path="/dashboard/reviews" component={<Reviews />} />
+          <Route path="/dashboard/inbox" component={<Inbox />} />
+   
         </Routes>
+        
         <Footer />
       </Box>
     </Box>

@@ -6,6 +6,7 @@ import App from "./App";
 import { Login } from "./pages";
 import { ThemeToggleProvider } from "./contexts/ThemeContext";
 import { CssBaseline } from "@mui/material";
+import Sidebar from "./components/common/Sidebar";
 
 const router = createBrowserRouter([
   {
@@ -13,20 +14,17 @@ const router = createBrowserRouter([
     element:<Login/>
   },
   {
-    path:"/app",
-    element:<App/>
+    path:"/dashboard",
+    element:<ThemeToggleProvider>
+              <CssBaseline />
+                  <App/>
+            </ThemeToggleProvider>
   }
 ])
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <ThemeToggleProvider>
-      <CssBaseline />
-      <Router>
-      {/* <RouterProvider router={router} /> */}
-      <App/>
-      </Router>
-    </ThemeToggleProvider>
+     <RouterProvider router={router} />
   </React.StrictMode>
 );
