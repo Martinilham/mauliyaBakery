@@ -1,14 +1,14 @@
-POST http://localhost:5000/barang 
-Content-Type: application/json
+# POST http://localhost:5000/barang 
+# Content-Type: application/json
 
-{
-    "namabarang" : "roti salju",
-    "deskripsi" :"roti kering",
-    "kategori" : "roti kering",
-    "jumlah" : 20,
-    "harga" : 2000,
-    "discount" : 10
-}
+# {
+#     "namabarang" : "roti salju",
+#     "deskripsi" :"roti kering",
+#     "kategori" : "roti kering",
+#     "jumlah" : 20,
+#     "harga" : 2000,
+#     "discount" : 10
+# }
 
 POST http://localhost:5000/user 
 Content-Type: application/json
