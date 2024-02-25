@@ -1,30 +1,65 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Dashboard from "./admin/pages/dashboard.jsx";
-import Login from "./admin/pages/login.jsx";
-// import Users from "./pages/Users";
-// import Products from "./pages/Products";
-// import AddUser from "./pages/AddUser";
-// import EditUser from "./pages/EditUser";
-// import AddProduct from "./pages/AddProduct";
-// import EditProduct from "./pages/EditProduct";
+import * as React from "react";
+import { Routes, Route, BrowserRouter } from "react-router-dom";
+import Box from "@mui/material/Box";
+import Sidebar from "./components/common/Sidebar";
+import Dashboard from "./pages/Dashboard";
+import Navbar from "./components/common/Navbar";
+import {
+  Login,
+  AddProduct,
+  Brands,
+  Customers,
+  Inbox,
+  Orders,
+  OrderTemplate,
+  ProductCategories,
+  Products,
+  ProductSales,
+  Reviews,
+  SalesAnalytics,
+  Settings,
+  SingleCustomer,
+  SingleOrder,
+  SingleProduct,
+  Suppliers,
+  Transactions,
+} from "./pages";
+import Footer from "./components/common/Footer";
 
+const sideBarWidth = 250;
 
 function App() {
+
   return (
-    <div>
+    <>
       <BrowserRouter>
-        <Routes>
+      <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/dashboard" element={<Dashboard />} />
-          {/* <Route path="/users" element={<Users />} />
-          <Route path="/users/add" element={<AddUser />} />
-          <Route path="/users/edit/:id" element={<EditUser />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/add" element={<AddProduct />} />
-          <Route path="/products/edit/:id" element={<EditProduct />} /> */}
+          <Route path="/products/:id" element={<SingleProduct />} />
+          <Route path="/products/categories" element={<ProductCategories />} />
+          <Route path="/customers" element={<Customers />} />
+          <Route path="/customers/:id" element={<SingleCustomer />} />
+          <Route path="/sales/analysis" element={<SalesAnalytics />} />
+          <Route path="/sales" element={<ProductSales />} />
+          <Route path="/orders" element={<Orders />} />
+          <Route path="/orders/template" element={<OrderTemplate />} />
+          <Route path="/orders/:id" element={<SingleOrder />} />
+          <Route path="/suppliers" element={<Suppliers />} />
+          <Route path="/transactions" element={<Transactions />} />
+          <Route path="/brands" element={<Brands />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/settings" element={<Settings />} />
+          <Route path="/reviews" element={<Reviews />} />
+          <Route path="/inbox" element={<Inbox />} />
         </Routes>
+
       </BrowserRouter>
-    </div>
+    </>
+    
+        
   );
 }
 

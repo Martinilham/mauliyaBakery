@@ -2,8 +2,8 @@ import mongoose from "mongoose";
 
 const Pesanan = mongoose.Schema({
     idpemesan:{
-        type:String,
-        required: true
+        type: mongoose.Schema.Types.ObjectId, 
+        ref: 'User'
     },
     namapemesan: {
         type:String,
@@ -11,8 +11,12 @@ const Pesanan = mongoose.Schema({
     },
     items : [
         {
-            namabarang:{
-                type:Number,
+            produk_id: { 
+                type: mongoose.Schema.Types.ObjectId, 
+                ref: 'produk' 
+            },
+            namaproduk:{
+                type:String,
                 required:true,
             },
             harga:{
@@ -41,6 +45,10 @@ const Pesanan = mongoose.Schema({
         type:String,
         required:true
     },
+    statusditerima: {
+        type:String,
+        required:true
+    },
     tglorder: {
         type:String,
         required:true
@@ -48,4 +56,4 @@ const Pesanan = mongoose.Schema({
 
 });
 
-export default mongoose.model("User",User)
+export default mongoose.model("Pesanan",Pesanan)

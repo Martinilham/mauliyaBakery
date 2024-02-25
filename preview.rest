@@ -1,8 +1,8 @@
-# POST http://localhost:5000/barang 
+# POST http://localhost:5000/produk 
 # Content-Type: application/json
 
 # {
-#     "namabarang" : "roti salju",
+#     "namaproduk" : "roti kukus",
 #     "deskripsi" :"roti kering",
 #     "kategori" : "roti kering",
 #     "jumlah" : 20,
@@ -10,14 +10,44 @@
 #     "discount" : 10
 # }
 
-POST http://localhost:5000/user 
+# POST http://localhost:5000/user 
+# Content-Type: application/json
+
+# {
+#     "nama": "martin",
+#     "email": "martin@gmail.com",
+#     "status": "client",
+#     "alamat": "payaman",
+#     "notlpn": "08951271261",
+#     "password": "wer1234ui"
+# }
+
+POST http://localhost:5000/pesanan
 Content-Type: application/json
 
 {
-    "nama": "martin",
-    "email": "martin@gmail.com",
-    "status": "client",
-    "alamat": "payaman",
-    "notlpn": "08951271261",
-    "password": "wer1234ui"
+    "idpemesan": "65d62a0bf4887c71539eee90",
+    "namapemesan": "martin",
+    "items": [
+        {
+            "produk_id": "65db674b4897250bac800724",
+            "namaproduk": "roti salju",
+            "harga": 5000,
+            "jumlah": 2
+        },
+        {
+            
+            "produk_id": "65db67854897250bac800726",
+            "namaproduk": "roti kukus",
+            "harga": 5000,
+            "jumlah": 2
+        }
+    ],
+    "alamat": "madiun",
+    "notlpn": "0891723712912",
+    "total": 10000,
+    "statusbayar": "pending",
+    "statusditerima": "belum diterima",
+    "tglorder": "04-02-2024"
+
 }
