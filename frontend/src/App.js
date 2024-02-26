@@ -29,13 +29,14 @@ import Footer from "./components/common/Footer";
 const sideBarWidth = 250;
 
 function App() {
+  const isUserSignedIn = !!localStorage.getItem('token')
 
   return (
     <>
       <BrowserRouter>
       <Routes>
           <Route path="/" element={<Login />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          {isUserSignedIn &&  <Route path="/dashboard" element={<Dashboard />} />}
           <Route path="/products" element={<Products />} />
           <Route path="/products/add" element={<AddProduct />} />
           <Route path="/products/:id" element={<SingleProduct />} />

@@ -1,5 +1,9 @@
 import User from "../models/UserModels.js";
 import Bcrypt from "bcrypt"
+import  jwt  from "jsonwebtoken";
+
+
+const SECRET_KEY = 'super-secret-key'
 
 export const getUser = async (req, res) => {
     try {
@@ -58,3 +62,25 @@ export const registUser = async (req, res) => {
         res.status(400).json({message: error.message});
     }
 }
+
+export const loginUser = async(req,res) => {
+    try{
+        const { nama, password } = req.body
+        const user = await User.findOne({ nama })
+        if (!user) {
+            return res.status(401).json({ error: 'user tidak ditemukan'})
+        }
+        const isPasswordValid = await Bcrypt.compare(password, user.password)
+        if(!isPasswordValid) {
+            return res.status(401).json({ error: 'password  salah' })
+        }
+        if(user.statususer === 'admin') {
+            const token = jwt.sign({ userId: user._id ,isAdmin:true}, SECRET_KEY, { expiresIn: '1hr' })
+        res.json({ message: 'Login Berhasil' ,isAdmin:true})
+        }
+    } catch(error){
+        res.status(500).json({ error: 'Login Gagal' })
+    }
+}
+
+
