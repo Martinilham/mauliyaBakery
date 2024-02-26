@@ -6,8 +6,7 @@ const Pesanan = mongoose.Schema({
         ref: 'User'
     },
     namapemesan: {
-        type:String,
-        required:true
+        type:String
     },
     items : [
         {

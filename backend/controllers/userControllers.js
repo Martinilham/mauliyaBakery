@@ -1,8 +1,9 @@
 import User from "../models/UserModels.js";
+import Bcrypt from "bcrypt"
 
 export const getUser = async (req, res) => {
     try {
-        const user = await User.find();
+        const user = await User.find()
         res.json(user);
     } catch (error) {
         res.status(500).json({message: error.message});
@@ -41,6 +42,18 @@ export const deleteUser = async (req, res) => {
     try {
         const deleteUser = await User.deleteOne({_id:req.params.id});
         res.status(200).json(deleteUser);
+    } catch (error) {
+        res.status(400).json({message: error.message});
+    }
+}
+
+export const registUser = async (req, res) => {
+    try {
+        const { nama, email, statususer, notlpn, password} = req.body
+        const enkripsipwd = await Bcrypt.hash(password, 10)
+        const userbaru = new User({ nama, email, statususer, notlpn, password: enkripsipwd })
+        await userbaru.save()
+        res.status(200).json("daftar berhasil");
     } catch (error) {
         res.status(400).json({message: error.message});
     }

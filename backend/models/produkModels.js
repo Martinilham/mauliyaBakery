@@ -25,6 +25,10 @@ const Produk = mongoose.Schema({
         type:Number,
         required: true
     },
+    gambar:{
+        type:String,
+        required: true
+    },
 });
 
 export default mongoose.model("Produk",Produk)

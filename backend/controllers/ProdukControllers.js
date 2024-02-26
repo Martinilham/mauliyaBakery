@@ -2,7 +2,7 @@ import Produk from "../models/produkModels.js";
 
 export const getProduk = async (req, res) => {
     try {
-        const barang = await Produk.find();
+        const barang = await Produk.find().populated("namaproduk");
         res.json(barang);
     } catch (error) {
         res.status(500).json({message: error.message});

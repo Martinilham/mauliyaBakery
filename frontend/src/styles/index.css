@@ -131,3 +131,9 @@ span.Cancelled {
     display: block;
   }
 }
+
+@media (min-width: 1025px) {
+  .h-custom-2 {
+    height: 100%;
+    }
+  }

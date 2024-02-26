@@ -4,11 +4,15 @@ const User = mongoose.Schema({
         type:String,
         required: true
     },
+    namalengkap:{
+        type:String,
+        
+    },
     email: {
         type:String,
         required:true
     },
-    status:{
+    statususer:{
         type:String,
         required:true
     },

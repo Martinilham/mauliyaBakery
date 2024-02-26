@@ -2,7 +2,7 @@ import Pesanan from "../models/pesananModels.js";
 
 export const getPesanan = async (req, res) => {
     try {
-        const pesanan = await Pesanan.find();
+        const pesanan = await Pesanan.find().populate("nama.nama");
         res.json(pesanan);
     } catch (error) {
         res.status(500).json({message: error.message});
