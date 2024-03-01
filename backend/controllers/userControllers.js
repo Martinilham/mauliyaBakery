@@ -3,6 +3,7 @@ import Bcrypt from "bcrypt"
 import  jwt  from "jsonwebtoken";
 
 
+
 const SECRET_KEY = 'super-secret-key'
 
 export const getUser = async (req, res) => {
@@ -76,11 +77,19 @@ export const loginUser = async(req,res) => {
         }
         if(user.statususer === 'admin') {
             const token = jwt.sign({ userId: user._id ,isAdmin:true}, SECRET_KEY, { expiresIn: '1hr' })
-        res.json({ message: 'Login Berhasil' ,isAdmin:true})
+        res.json({ message: 'Login Berhasil' ,token,isAdmin:true})
         }
     } catch(error){
         res.status(500).json({ error: 'Login Gagal' })
     }
 }
+export const userNow = (req,res) => {
+    try{
+        const profil = localStorage.getItem("UserId")
+        
 
+    } catch(error){
+        res.status(500).json({ error: 'Login Gagal' })
+    }
+}
 

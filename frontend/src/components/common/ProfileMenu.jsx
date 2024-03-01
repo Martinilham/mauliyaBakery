@@ -9,6 +9,7 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
+import { NavLink } from "react-router-dom";
 
 const ProfileMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -72,7 +73,8 @@ const ProfileMenu = () => {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar /> Profile
+          <Avatar /> 
+          <NavLink to="/profil">Profile</NavLink>
         </MenuItem>
         <MenuItem>
           <Avatar /> My account

@@ -12,12 +12,13 @@ const User = mongoose.Schema({
         type:String,
         required:true
     },
-    statususer:{
+    alamat:{
         type:String,
         required:true
     },
-    alamat:{
+    statususer:{
         type:String,
+        required:true
     },
     notlpn: {
         type:String,

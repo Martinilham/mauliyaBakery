@@ -88,11 +88,11 @@ export const links = [
     icon: <FiMessageCircle />,
     url: "/reviews",
   },
-  // {
-  //   name: "Settings",
-  //   icon: <FiSettings />,
-  //   url: "/settings",
-  // },
+  {
+    name: "Settings",
+    icon: <FiSettings />,
+    url: "/profil",
+  },
   {
     name: "Inbox",
     icon: <FiMail />,

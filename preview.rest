@@ -10,16 +10,16 @@
 #     "discount" : 10
 # }
 
-POST http://localhost:5000/daftar 
+POST http://localhost:5000/user 
 Content-Type: application/json
 
 {
-    "nama": "rahma",
-    "namalengkap":"asd",
-    "email": "martin@gmail.com",
-    "statususer": "admin",
-    "alamat": "d",
-    "notlpn": "08951271261",
+    "nama": "bayus",
+    "namalengkap":"bayu satria",
+    "email": "bayu@gmail.com",
+    "statususer": "client",
+    "alamat": "madiun",
+    "notlpn": "08951271261124",
     "password": "wer1234ui"
 }
 

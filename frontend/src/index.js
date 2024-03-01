@@ -1,8 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter as Router } from "react-router-dom";
+import "./styles/tailwinds.css"
 import "./styles/index.css";
-import 'bootstrap/dist/css/bootstrap.css';
 import App from "./App";
 import { ThemeToggleProvider } from "./contexts/ThemeContext";
 import { CssBaseline } from "@mui/material";

@@ -23,6 +23,7 @@ import {
   SingleProduct,
   Suppliers,
   Transactions,
+  UserProfil,
 } from "./pages";
 import Footer from "./components/common/Footer";
 
@@ -37,6 +38,7 @@ function App() {
       <Routes>
           <Route path="/" element={<Login />} />
           {isUserSignedIn &&  <Route path="/dashboard" element={<Dashboard />} />}
+          {isUserSignedIn &&  <Route path="/profil" element={<UserProfil />} />}
           <Route path="/products" element={<Products />} />
           <Route path="/products/add" element={<AddProduct />} />
           <Route path="/products/:id" element={<SingleProduct />} />
@@ -55,6 +57,8 @@ function App() {
           <Route path="/settings" element={<Settings />} />
           <Route path="/reviews" element={<Reviews />} />
           <Route path="/inbox" element={<Inbox />} />
+          
+          
         </Routes>
 
       </BrowserRouter>
