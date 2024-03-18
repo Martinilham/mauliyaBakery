@@ -12,10 +12,12 @@ const BarChart = () => {
         boxShadow: "none !important",
         borderRadius: "12px",
         padding: "15px",
-        height: { xs: "380px", md: "100%" },
+        height: { xs: "400px", md: "100%" },
         borderStyle: "solid",
         borderWidth: "1px",
         borderColor: "divider",
+        height: "100%",
+        marginTop: "20px"
       }}
     >
       <Typography variant="h5">Daily Visits Insights</Typography>
@@ -24,7 +26,7 @@ const BarChart = () => {
         series={dailyVisitsBarChartData}
         type="bar"
         width="100%"
-        height="90%"
+        height="100%"
       />
     </Paper>
   );

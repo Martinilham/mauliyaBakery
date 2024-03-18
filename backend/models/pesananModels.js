@@ -2,8 +2,7 @@ import mongoose from "mongoose";
 
 const Pesanan = mongoose.Schema({
     idpemesan:{
-        type: mongoose.Schema.Types.ObjectId, 
-        ref: 'User'
+        type: String 
     },
     namapemesan: {
         type:String
@@ -11,8 +10,7 @@ const Pesanan = mongoose.Schema({
     items : [
         {
             produk_id: { 
-                type: mongoose.Schema.Types.ObjectId, 
-                ref: 'produk' 
+                type: String
             },
             namaproduk:{
                 type:String,

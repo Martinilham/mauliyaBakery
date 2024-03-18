@@ -1,3 +1,5 @@
+import axios from "axios";
+
 export const productsColumns = [
   {
     accessorKey: "product_name", //access nested data with dot notation
@@ -95,3 +97,13 @@ export const products = [
   },
 
 ];
+
+export const productAll = async () => {
+  try {
+    const response = await axios.get("http://localhost:5000/getdata");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching customers data:", error);
+    throw error;
+  }
+};

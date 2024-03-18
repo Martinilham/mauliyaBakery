@@ -1,4 +1,5 @@
 import { Avatar } from "@mui/material";
+import axios from "axios";
 
 export const customersColumns = [
   {
@@ -29,6 +30,17 @@ export const customersColumns = [
   },
 ];
 
+
+
+export const customersAll = async () => {
+  try {
+    const response = await axios.get("http://localhost:5000/daftar");
+    return response.data;
+  } catch (error) {
+    console.error("Error fetching customers data:", error);
+    throw error;
+  }
+};
 export const customers = [
   {
     id: 1,

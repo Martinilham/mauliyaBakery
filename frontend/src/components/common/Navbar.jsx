@@ -20,7 +20,7 @@ const Navbar = ({ sideBarWidth, handleDrawerToggle }) => {
   const theme = useTheme();
 
   const currentTheme = theme.palette.mode;
-
+  
   return (
     <AppBar
       position="fixed"

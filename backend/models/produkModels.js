@@ -1,9 +1,9 @@
 import mongoose from 'mongoose';
 
 const Produk = mongoose.Schema({
-    namaproduk:{
+    fname:{
         type:String,
-        required: true
+        required:true
     },
     deskripsi:{
         type:String,
@@ -25,10 +25,13 @@ const Produk = mongoose.Schema({
         type:Number,
         required: true
     },
-    gambar:{
+    imgpath:{
         type:String,
-        required: true
+        required:true
     },
+    date:{
+        type:Date
+    }
 });
 
 export default mongoose.model("Produk",Produk)

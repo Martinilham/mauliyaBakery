@@ -10,16 +10,28 @@ import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
 import { NavLink } from "react-router-dom";
+import { useNavigate } from 'react-router-dom'
 
 const ProfileMenu = () => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const navigate = useNavigate();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
   };
+
+  const handleLogout =  async (event) => {
+    event.preventDefault();
+    try {
+        localStorage.removeItem('token')
+        navigate("/login")
+    } catch (error) {
+        console.log('Login Error', error)
+    }
+  }
   return (
     <>
       <Tooltip title="Account settings" arrow>
@@ -96,7 +108,7 @@ const ProfileMenu = () => {
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Logout
+          <button onClick={handleLogout}>Logout</button>
         </MenuItem>
       </Menu>
     </>

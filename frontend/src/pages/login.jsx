@@ -1,50 +1,85 @@
-import React from 'react';
-import {
-  MDBBtn,
-  MDBContainer,
-  MDBRow,
-  MDBCol,
-  MDBIcon,
-  MDBInput
-}
-from 'mdb-react-ui-kit';
+import React, { useState ,useEffect} from 'react';
+import { useNavigate } from 'react-router-dom'
+import axios from "axios"
 
 function Login() {
-  return (
-    <MDBContainer container>
-      <MDBRow>
 
-        <MDBCol sm='6'>
+  const [nama,setnama] = useState("")
+  const [password,setpassword] = useState("")
+  const navigate = useNavigate();
 
-          <div className='d-flex flex-row ps-5 pt-5'>
-            <MDBIcon fas icon="crow fa-3x me-3" style={{ color: '#709085' }}/>
-            <span className="h1 fw-bold mb-0">Logo</span>
-          </div>
-
-          <div className='d-flex flex-column justify-content-center h-custom-1 w-75 pt-4'>
-
-            <h3 className="fw-normal mb-3 ps-5 pb-3" style={{letterSpacing: '1px'}}>Log in</h3>
-
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Email address' id='formControlLg' type='email' size="lg"/>
-            <MDBInput wrapperClass='mb-4 mx-5 w-100' label='Password' id='formControlLg' type='password' size="lg"/>
-
-            <MDBBtn className="mb-4 px-5 mx-5 w-100" color='info' size='lg'>Login</MDBBtn>
-            <p className="small mb-5 pb-lg-3 ms-5"><a class="text-muted" href="#!">Forgot password?</a></p>
-            <p className='ms-5'>Don't have an account? <a href="#!" class="link-info">Register here</a></p>
-
-          </div>
-
-        </MDBCol>
-
-        <MDBCol sm='6' className='d-none d-sm-block px-0'>
-          <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/img3.webp"
-            alt="Login image" className="w-75" style={{objectFit: 'cover', objectPosition: 'left'}} />
-        </MDBCol>
-
-      </MDBRow>
-
-    </MDBContainer>
-  );
+  
+const ambiluser = () => {
+    axios
+    .get('http://localhost:5000/daftar')
+    .then((res) => {
+        console.log(res.data)
+    })
 }
+
+useEffect(() => {
+  ambiluser()
+}, [])
+
+
+
+const handleLogin =  async (event) => {
+  event.preventDefault();
+  try {
+      const response = await axios
+      .post('http://localhost:5000/login', { nama, password })
+      const token = response.data.token
+      alert('Login successful')
+      setnama('')
+      setpassword('')
+      ambiluser();
+      if(response.data.isAdmin){
+        navigate("/dashboard")
+      }
+      window.location.reload();
+      localStorage.setItem('token', token)
+  } catch (error) {
+      console.log('Login Error', error)
+  }
+}
+
+  return (
+    <div className='w-full h-screen flex'>
+         <div className='w-[50%] h-[100%] bg-gray-600 text-white flex justify-center items-center'>
+            <form className='text-center border rounded-lg w-[600px] h-[400px] p-9'
+            onSubmit={handleLogin}
+            >
+                 {/*Username Input */}
+                 <label>Username</label>
+                <br />
+                <input className='w-[400px] h-[40px] rounded-xl bg-zinc-700 p-2'
+                type='text'
+                placeholder='Username'
+                value={nama}
+                onChange={(e) => setnama(e.target.value)} />
+                <br />
+                <br />
+                 {/* Password Input */}
+                 <label>Password</label>
+                <br />
+                <input className='w-[400px] h-[40px] rounded-xl bg-zinc-700 p-2'
+                type='password'
+                placeholder='Password'
+                value={password}
+                onChange={(e) => setpassword(e.target.value)} />
+                <br />
+                <br />
+                {/* Button */}
+                <button className='w-[200px] h-[50px] border hover:bg-teal-900'
+                type='submit'>Login</button>
+            </form>
+        </div>
+        <div className='w-[50%] h-[100%] flex justify-center items-center bg-teal-800'>
+            <h2 className='text-3xl text-white '>Login</h2>
+        </div>
+    </div>
+  )
+}
+
 
 export default Login;

@@ -1,8 +1,37 @@
 import Produk from "../models/produkModels.js";
 
+  export const saveProduk = async (req, res) => {
+    upload(req, res, async (err) => {
+      if (err) {
+        return res.status(500).json({ message: err.message });
+      }
+     
+  
+      // Membuat objek produk dari data yang diterima dari body
+      const barang = new Produk({
+        namaproduk: req.body.namaproduk,
+        deskripsi: req.body.deskripsi,
+        kategori: req.body.kategori,
+        jumlah: req.body.jumlah,
+        harga: req.body.harga,
+        discount: req.body.discount,
+        gambar: req.file.path, // Nama file gambar yang diunggah
+      });
+  
+      try {
+        // Menyimpan produk ke database
+        const insertedBarang = await barang.save();
+        res.status(201).json(insertedBarang);
+      } catch (error) {
+        res.status(400).json({ message: error.message });
+      }
+    });
+  };
+
+
 export const getProduk = async (req, res) => {
     try {
-        const barang = await Produk.find().populated("namaproduk");
+        const barang = await Produk.find();
         res.json(barang);
     } catch (error) {
         res.status(500).json({message: error.message});
@@ -18,15 +47,16 @@ export const getProdukById = async (req, res) => {
     }
 }
 
-export const saveProduk = async (req, res) => {
-    const barang = new Produk(req.body);
-    try {
-        const insertedBarang = await barang.save();
-        res.status(201).json(insertedBarang);
-    } catch (error) {
-        res.status(400).json({message: error.message});
-    }
-}
+// export const saveProduk = async (req, res) => {
+//     const barang = new Produk(req.body);
+//     try {
+//         const insertedBarang = await barang.save();
+//         res.status(201).json(insertedBarang);
+//     } catch (error) {
+//         res.status(400).json({message: error.message});
+//     }
+// }
+
 
 export const updateProduk = async (req, res) => {
     try {

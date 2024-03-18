@@ -76,20 +76,12 @@ export const loginUser = async(req,res) => {
             return res.status(401).json({ error: 'password  salah' })
         }
         if(user.statususer === 'admin') {
-            const token = jwt.sign({ userId: user._id ,isAdmin:true}, SECRET_KEY, { expiresIn: '1hr' })
+            const token = jwt.sign({ userId: user._id , userName: user.nama,isAdmin:true}, SECRET_KEY, { expiresIn: '1hr' })
         res.json({ message: 'Login Berhasil' ,token,isAdmin:true})
         }
     } catch(error){
         res.status(500).json({ error: 'Login Gagal' })
     }
 }
-export const userNow = (req,res) => {
-    try{
-        const profil = localStorage.getItem("UserId")
-        
 
-    } catch(error){
-        res.status(500).json({ error: 'Login Gagal' })
-    }
-}
 

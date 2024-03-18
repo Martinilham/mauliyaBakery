@@ -69,20 +69,10 @@ export const links = [
     ],
   },
   {
-    name: "Suppliers",
-    icon: <FaShare />,
-    url: "/suppliers",
-  },
-  {
     name: "Transactions",
     icon: <FaHandshake />,
     url: "/transactions",
   },
-  // {
-  //   name: "Brands",
-  //   icon: <FiLayers />,
-  //   url: "/brands",
-  // },
   {
     name: "Reviews",
     icon: <FiMessageCircle />,
@@ -92,10 +82,5 @@ export const links = [
     name: "Settings",
     icon: <FiSettings />,
     url: "/profil",
-  },
-  {
-    name: "Inbox",
-    icon: <FiMail />,
-    url: "/inbox",
   },
 ];

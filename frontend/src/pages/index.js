@@ -10,11 +10,10 @@ export { default as ProductSales } from "./ProductSales";
 export { default as Orders } from "./Orders";
 export { default as OrderTemplate } from "./OrderTemplate";
 export { default as SingleOrder } from "./SingleOrder";
-export { default as Suppliers } from "./Suppliers";
 export { default as Transactions } from "./Transactions";
-export { default as Brands } from "./Brands";
-export { default as Reviews } from "./Reviews";
 export { default as Settings } from "./Settings";
-export { default as Inbox } from "./Inbox";
 export { default as Login } from "./login";
 export { default as UserProfil } from "./userProfil";
+export { default as Register } from "./register";
+export { default as Popup } from "./PopUp";
+export { default as Edit } from "./edit"
