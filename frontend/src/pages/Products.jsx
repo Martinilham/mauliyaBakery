@@ -74,7 +74,7 @@ const Products = () => {
                     {data.map((barang, index) => (
                         <tr key={index} className={`${index % 2 === 0 ? 'dark' : 'light'}:bg-white hover:bg-gray-200  dark:${index % 2 === 0 ? 'odd' : 'even'}:bg-gray-800 dark:hover:bg-gray-700 `}>
                         <td className="px-3 py-4  text-sm font-medium ">
-                            <img src={require(`../uploads/${barang.imgpath}`)} alt={barang.namaproduk} style={{ maxWidth: "80px" }}></img>
+                            <img src={require(`../../../backend/public/uploads/${barang.imgpath}`)} alt={barang.namaproduk} style={{ maxWidth: "80px" }}></img>
                         </td>
                         <td className="px-1 py-4 whitespace-nowrap text-start text-sm font-medium">
                           <button 

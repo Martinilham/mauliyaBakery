@@ -26,6 +26,7 @@ app.use(cors())
 app.use(produkRoutes);
 app.use(userRoutes)
 app.use(pesananRoutes)
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use("/uploads",express.static("./uploads"));
 

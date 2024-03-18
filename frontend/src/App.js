@@ -27,7 +27,7 @@ import {
   Register,
   Edit,
 } from "./pages";
-import Footer from "./components/common/Footer";
+
 
 const sideBarWidth = 250;
 
