@@ -8,7 +8,7 @@ const Orders = () => {
 
 
     const getUserData = async () => {
-        const res = await axios.get("http://localhost:5000/pesanan", {
+        const res = await axios.get("https://mauliya-bakeryserve.vercel.app/pesanan", {
             headers: {
                 "Content-Type": "application/json"
             }

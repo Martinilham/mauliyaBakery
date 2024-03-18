@@ -16,7 +16,7 @@ const Products = () => {
   const closeDialog = () => setIsOpen(false);
   
   const getUserData = async () => {
-    const res = await axios.get("http://localhost:5000/getdata", {
+    const res = await axios.get("https://mauliya-bakeryserve.vercel.app/getdata", {
         headers: {
             "Content-Type": "application/json"
         }
@@ -37,7 +37,7 @@ const Products = () => {
 
   const deleteProduk = async(id)=>{
     setIsOpen(false)
-    await axios.delete(`http://localhost:5000/getdata/${id}`)
+    await axios.delete(`https://mauliya-bakeryserve.vercel.app/getdata/${id}`)
     getUserData()
   }
 
