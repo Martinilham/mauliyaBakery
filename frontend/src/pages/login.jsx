@@ -39,6 +39,7 @@ const handleLogin =  async (event) => {
       window.location.reload();
       localStorage.setItem('token', token)
   } catch (error) {
+      alert('Login gagal')
       console.log('Login Error', error)
   }
 }
