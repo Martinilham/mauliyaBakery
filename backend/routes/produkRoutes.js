@@ -7,7 +7,7 @@ import moment from "moment"
 
 const imgconfig = multer.diskStorage({
     destination:(req,file,callback)=>{
-        callback(null,"./../frontend/src/uploads")
+        callback(null,"./public/uploads")
     },
     // "./../frontend/src/uploads"
     filename:(req,file,callback)=>{
