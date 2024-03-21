@@ -7,9 +7,6 @@ import cloudinary from '../cloudinary.js'
 
 
 const imgconfig = multer.diskStorage({
-    destination:(req,file,callback)=>{
-        callback(null,"./public/uploads")
-    },
     filename:(req,file,callback)=>{
         callback(null,`image-${Date.now()}.${file.originalname}`)
     }
