@@ -42,6 +42,7 @@ const AddProduct = () => {
         if (res.data.status === 401 || !res.data) {
           console.log("errror")
         } 
+        navigate("/products")
       }
 
 
