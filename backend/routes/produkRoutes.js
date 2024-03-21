@@ -3,44 +3,41 @@ const router = new express.Router();
 import multer from "multer"
 import Produk from "../models/produkModels.js"
 import moment from "moment"
+import cloudinary from '../cloudinary.js'
 
 
 const imgconfig = multer.diskStorage({
     destination:(req,file,callback)=>{
         callback(null,"./public/uploads")
     },
-    // "./../frontend/src/uploads"
     filename:(req,file,callback)=>{
-        callback(null,`imgae-${Date.now()}. ${file.originalname}`)
+        callback(null,`image-${Date.now()}.${file.originalname}`)
     }
-})
+});
 
-
-
+// img filter
 const isImage = (req,file,callback)=>{
     if(file.mimetype.startsWith("image")){
         callback(null,true)
     }else{
-        callback(new Error("only images is allowd"))
+        callback(new Error("only images is allow"))
     }
 }
 
 const upload = multer({
     storage:imgconfig,
     fileFilter:isImage
-});
-
+})
 
 
 router.post("/register",upload.single("photo"),async(req,res)=>{
-
-    const {filename} = req.file;
+    
 
     const {fname,deskripsi,kategori,jumlah,harga,discount} = req.body;
 
-    if(!fname || !filename){
-        res.status(401).json({status:401,message:"fill all the data"})
-    }
+    
+    const upload = await cloudinary.uploader.upload(req.file.path);
+    
 
     try {
 
@@ -53,7 +50,7 @@ router.post("/register",upload.single("photo"),async(req,res)=>{
             jumlah:jumlah,
             harga:harga,
             discount:discount,
-            imgpath:filename,
+            imgpath:upload.secure_url,
             date:date
         });
 
