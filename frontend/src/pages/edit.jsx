@@ -20,12 +20,6 @@ function Edit() {
 
     const getUserById = async (id) => {
         const response = await axios.get(`http://localhost:5000/getdata/${id}`);
-        setproduk(response.data.fname)
-        setkategori(response.data.kategori)
-        setdeskripsi(response.data.deskripsi)
-        setjumlah(response.data.jumlah)
-        setharga(response.data.harga)
-        setdiscount(response.data.discount)
       };
       
     useEffect(() => {
@@ -36,14 +30,14 @@ function Edit() {
         e.preventDefault();
         try {
           await axios.patch(`http://localhost:5000/getdata/${id}`, {
-            produk,
+            fname:produk,
             kategori,
             deskripsi,
             jumlah,
             harga,
             discount
           });
-          navigate("/");
+          navigate("/products");
         } catch (error) {
           console.log(error);
         }

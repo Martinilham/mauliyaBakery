@@ -58,6 +58,7 @@ const AddProduct = () => {
             borderColor: "divider",
             height: "100%",
             padding: "16px",
+            width:"auto"
           }}
         >
           <div class="min-h-screen p-6  flex items-center justify-center">

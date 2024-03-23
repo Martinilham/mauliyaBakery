@@ -12,9 +12,18 @@ const Products = () => {
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const [record,setRecords] = useState([])
-    const filter = (e)=>{
+  const filter = (e)=>{
         setRecords(data.filter(f=>f.fname.toLowerCase().includes(e.target.value)))
+  };
+  const deleteProduk = async (id) => {
+    setIsOpen(false);
+    try {
+      await axios.delete(`https://mauliya-bakeryserve.vercel.app/getdata/${id}`);
+      getUserData();
+    } catch (error) {
+      console.error("Error deleting product:", error);
     }
+  };
   const openDialog = (id) => {
     setDeleteItemId(id);
     setIsOpen(true);
@@ -48,15 +57,7 @@ const Products = () => {
     getUserData();
   }, []);
 
-  const deleteProduk = async (id) => {
-    setIsOpen(false);
-    try {
-      await axios.delete(`https://mauliya-bakeryserve.vercel.app/getdata/${id}`);
-      getUserData();
-    } catch (error) {
-      console.error("Error deleting product:", error);
-    }
-  };
+  
 
   return (
     <Layout>
