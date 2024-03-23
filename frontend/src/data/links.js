@@ -28,11 +28,7 @@ export const links = [
       {
         name: "Add Product",
         url: "/products/add",
-      },
-      {
-        name: "Product Category",
-        url: "/products/categories",
-      },
+      }
     ],
   },
   {

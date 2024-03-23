@@ -5,6 +5,7 @@ import axios from 'axios'
 
 const Orders = () => {
   const [data, setData] = useState([]);
+  const [total, setTotal] = useState(0);
 
 
     const getUserData = async () => {
@@ -21,9 +22,17 @@ const Orders = () => {
         }
 
     }
+    const totalHarga = (total) =>{
+      let totalBarang = 
+      totalBarang += total
+      setTotal(totalBarang)
+    }
+
     useEffect(() => {
       getUserData()
-  }, [])
+    }, [])
+  console.log(total)
+
 
   return (
     <Layout>
@@ -46,10 +55,10 @@ const Orders = () => {
                 <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                   <thead>
                     <tr>
-                      <th scope="col" className="px-3 py-3 text-start text-xs font-medium text-gray-500 uppercase">Gambar</th>
-                      <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Edit</th>
-                      <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Hapus</th>
-                      <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nama</th>
+                      <th scope="col" className="px-3 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nama</th>
+                      <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Alamat</th>
+                      <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Jumlah barang</th>
+                      <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">no Tlpn</th>
                       <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Deskripsi</th>
                       <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Kategori</th>
                     </tr>
@@ -57,16 +66,10 @@ const Orders = () => {
                   <tbody>
                     {data.map((pesanan, index) => (
                         <tr key={index} className={`${index % 2 === 0 ? 'dark' : 'light'}:bg-white hover:bg-gray-200  dark:${index % 2 === 0 ? 'odd' : 'even'}:bg-gray-800 dark:hover:bg-gray-700 `}>
-                        
-                        <td className="px-1 py-4 whitespace-nowrap text-start text-sm font-medium">
-                          <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
-                        </td>
-                        <td className="px-1 py-4 whitespace-nowrap text-start text-sm font-medium">
-                          <button type="button" className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
-                        </td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm font-medium ">{pesanan.nama}</td>
-                        <td className="px-6 py-4 whitespace-nowrap text-sm ">{pesanan.jumlah}</td>
                         <td className="px-6 py-4 whitespace-nowrap text-sm ">{pesanan.alamat}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm ">{pesanan.items.length}</td>
+                        <td className="px-6 py-4 whitespace-nowrap text-sm ">{totalHarga(pesanan.items.harga)}</td>
                         
                       </tr>
                       )

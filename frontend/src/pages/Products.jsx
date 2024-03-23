@@ -4,13 +4,17 @@ import axios from "axios";
 import PopUp from "./PopUp";
 import { useNavigate } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
+import Search from "../components/common/search";
 
 const Products = () => {
   const [data, setData] = useState([]);
   const [deleteItemId, setDeleteItemId] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
-
+  const [record,setRecords] = useState([])
+    const filter = (e)=>{
+        setRecords(data.filter(f=>f.fname.toLowerCase().includes(e.target.value)))
+    }
   const openDialog = (id) => {
     setDeleteItemId(id);
     setIsOpen(true);
@@ -33,6 +37,7 @@ const Products = () => {
         console.log("error");
       } else {
         setData(res.data.getBarang);
+        setRecords(res.data.getBarang)
       }
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -56,6 +61,24 @@ const Products = () => {
   return (
     <Layout>
       <Box sx={{ pt: "80px", pb: "20px" }}>
+      <div>
+          <div class='max-w-md mx-auto mb-4'>
+              <div class="relative flex items-center w-full h-12 rounded-lg focus-within:shadow-lg bg-white overflow-hidden">
+                  <div class="grid place-items-center h-full w-12 text-gray-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
+          </div>
+
+          <input
+          class="peer h-full w-full outline-none text-sm text-gray-700 pr-2"
+          type="text"
+          id="search"
+          placeholder="Cari Disini.." 
+          onChange={filter}/> 
+        </div>
+      </div>
+    </div>
         <Paper
           sx={{
             boxShadow: "none !important",
@@ -67,6 +90,7 @@ const Products = () => {
             padding: "11px",
           }}
         >
+          
           <div className="flex flex-col">
             <div className="-m-1.5 overflow-x-auto">
               <div className="p-1.5 min-w-full inline-block align-middle">
@@ -83,7 +107,7 @@ const Products = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {data.map((barang, index) => (
+                      {record.map((barang, index) => (
                         <tr key={index} className={`${index % 2 === 0 ? 'dark' : 'light'}:bg-white hover:bg-gray-200  dark:${index % 2 === 0 ? 'odd' : 'even'}:bg-gray-800 dark:hover:bg-gray-700 `}>
                           <td className="px-3 py-4  text-sm font-medium ">
                             <img src={barang.imgpath} alt={barang.namaproduk} style={{ maxWidth: "80px" }} />
@@ -129,7 +153,7 @@ const Products = () => {
                 <p className="mt-4 text-center">{barang.fname}</p>
                 <button
                   type="button"
-                  className="m-auto text-center inline-flex items-center gap-x-2 text-sm font-semibold rounded-md border border-red-500 bg-red-500 text-white hover:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                  className="inline-flex items-center text-center text-sm font-semibold rounded-md border border-red-500 bg-red-500 text-white hover:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
                   onClick={() => deleteProduk(barang._id)}
                 >
                   Delete
