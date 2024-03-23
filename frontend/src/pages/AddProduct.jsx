@@ -81,7 +81,7 @@ const AddProduct = () => {
                               type="text"
                               name="full_name"
                               id="full_name"
-                              class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                              class="h-10 border mt-1 rounded px-4 w-full text-gray-800 bg-gray-50"
                               value={produk}
                               onChange={(e) => setproduk(e.target.value)}
                             />
@@ -93,7 +93,7 @@ const AddProduct = () => {
                               type="text"
                               name="deskripsi"
                               id="deskripsi"
-                              class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                              class="h-10 border mt-1 rounded px-4 w-full text-gray-800 bg-gray-50"
                               value={deskripsi}
                               onChange={(e) => setdeskripsi(e.target.value)}
                             />
@@ -105,7 +105,7 @@ const AddProduct = () => {
                               name="jenis_kue"
                               id="jenis_kue"
                               placeholder="Pilih Kategori"
-                              class="h-10 border mt-1 rounded px-4 w-full bg-gray-50"
+                              class="h-10 border mt-1 rounded px-4 w-full text-gray-800 bg-gray-50"
                               value={kategori}
                               onChange={(e) => setkategori(e.target.value)}
                             >

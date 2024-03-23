@@ -18,7 +18,7 @@ function Edit() {
     const navigate = useNavigate();
     const { id } = useParams();
 
-    const getUserById = async () => {
+    const getUserById = async (id) => {
         const response = await axios.get(`http://localhost:5000/getdata/${id}`);
         setproduk(response.data.fname)
         setkategori(response.data.kategori)
@@ -29,8 +29,8 @@ function Edit() {
       };
       
     useEffect(() => {
-      getUserById();
-    }, []);    
+      getUserById(id);
+    }, [id]);    
 
     const updateBarang = async (e) => {
         e.preventDefault();
