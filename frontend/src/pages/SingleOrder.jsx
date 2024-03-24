@@ -11,7 +11,7 @@ const SingleProduct = () => {
 
   const getorderById = async (id) => {
     try {
-      const response = await axios.get(`http://localhost:5000/pesanan/${id}`);
+      const response = await axios.get(`https://mauliya-bakeryserve.vercel.app/pesanan/${id}`);
       setOrder(response.data);
     } catch (error) {
       console.error("Error fetching order:", error);
