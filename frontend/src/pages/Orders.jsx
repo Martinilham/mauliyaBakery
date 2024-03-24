@@ -4,10 +4,10 @@ import axios from "axios";
 import PopUp from "./PopUp";
 import { useNavigate } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
-import Search from "../components/common/search";
 
 const Products = () => {
   const [data, setData] = useState([]);
+  const navigate = useNavigate();
 
   const [record,setRecords] = useState([])
   const filter = (e)=>{
@@ -85,28 +85,38 @@ const Products = () => {
                         <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Jumlah</th>
                         <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Status Barang</th>
                         <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Status Bayar</th>
-                        <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Action</th>
+                        <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tanggal</th>
+                        <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Detail</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {record.map((barang, index) => (
+                      {record.map((order, index) => (
                         <tr key={index} className={`${index % 2 === 0 ? 'dark' : 'light'}:bg-white hover:bg-gray-200  dark:${index % 2 === 0 ? 'odd' : 'even'}:bg-gray-800 dark:hover:bg-gray-700 `}>
-                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{barang.nama}</td>
-                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{barang.alamat}</td>
-                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{barang.items.length}</td>
-                            {barang.statusditerima == "belum diterima" && (
-                              <td className="px-1 py-4 whitespace-nowrap text-sm text-red-800">{barang.statusditerima}</td>
+                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.nama}</td>
+                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.alamat}</td>
+                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.items.length}</td>
+                            {order.statusditerima == "belum diterima" && (
+                              <td className="px-1 py-4 whitespace-nowrap text-sm text-red-800">{order.statusditerima}</td>
                             )}
-                            {barang.statusditerima == "terkirim" && (
-                              <td className="px-1 py-4 whitespace-nowrap text-sm text-green-600">{barang.statusditerima}</td>
+                            {order.statusditerima == "terkirim" && (
+                              <td className="px-1 py-4 whitespace-nowrap text-sm text-green-600">{order.statusditerima}</td>
                             )}
-                            {barang.statusbayar == "dibayar" && (
-                              <td className="px-1 py-4 whitespace-nowrap text-sm text-green-600">{barang.statusbayar}</td>
+                            {order.statusbayar == "dibayar" && (
+                              <td className="px-1 py-4 whitespace-nowrap text-sm text-green-600">{order.statusbayar}</td>
                             )}
-                          {barang.statusbayar =="pending" && (
-                              <td className="px-1 py-4 whitespace-nowrap text-sm text-red-800">{barang.statusbayar}</td>
+                          {order.statusbayar =="pending" && (
+                              <td className="px-1 py-4 whitespace-nowrap text-sm text-red-800">{order.statusbayar}</td>
                             )}
-                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{barang.tglorder}</td>
+                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.tglorder}</td>
+                          <td className="px-1 py-4 whitespace-nowrap text-start text-sm font-medium">
+                            <button
+                              type="button"
+                              className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-green-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                              onClick={() => navigate(`/orders/${order._id}`)}
+                            >
+                              Detail
+                            </button>
+                          </td>
                         </tr>
                       ))}
                     </tbody>

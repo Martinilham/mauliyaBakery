@@ -49,18 +49,15 @@ function App() {
               <Route path="/products/add" element={<AddProduct />} />
               <Route path="/products/:id" element={<SingleProduct />} />
               <Route path="/edit/:id" element={<Edit />} />
-              <Route path="/products/categories" element={<ProductCategories />} />
               <Route path="/customers" element={<Customers />} />
               <Route path="/customers/:id" element={<SingleCustomer />} />
               <Route path="/sales/analysis" element={<SalesAnalytics />} />
               <Route path="/sales" element={<ProductSales />} />
               <Route path="/orders" element={<Orders />} />
-              <Route path="/orders/template" element={<OrderTemplate />} />
               <Route path="/orders/:id" element={<SingleOrder />} />
               <Route path="/transactions" element={<Transactions />} />
             </>
           )}
-          <Route path="/register" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </>
