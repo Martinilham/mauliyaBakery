@@ -20,6 +20,7 @@ function Edit() {
 
     const getUserById = async (id) => {
         const response = await axios.get(`http://localhost:5000/getdata/${id}`);
+        
       };
       
     useEffect(() => {
@@ -68,6 +69,7 @@ function Edit() {
                       <div class="">
                         <p class="font-medium text-lg">Data Barang</p>
                         <p>Isikan Pada kolom Yang Tersedia</p>
+                        <img src={gambar} style={{ maxWidth: "80px" }} />
                       </div>
 
                       <div class="lg:col-span-2">

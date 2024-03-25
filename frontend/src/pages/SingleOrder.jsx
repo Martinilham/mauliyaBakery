@@ -33,6 +33,11 @@ const SingleProduct = () => {
     );
   }
 
+  // Calculate total amount
+  const totalAmount = order.items.reduce((total, item) => {
+    return total + (item.harga * item.jumlah);
+  }, 0);
+
   return (
     <Layout>
       <Box sx={{ pt: "80px", pb: "20px" }}>
@@ -57,7 +62,7 @@ const SingleProduct = () => {
                 </li>
               ))}
             </ul>
-            <p>Total Amount: {order.totalAmount}</p>
+            <p>Total Amount: {totalAmount}</p>
             <p>Status: {order.statusbayar}</p>
           </div>
         </Paper>

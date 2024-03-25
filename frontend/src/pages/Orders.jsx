@@ -90,36 +90,44 @@ const Products = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      {record.map((order, index) => (
-                        <tr key={index} className={`${index % 2 === 0 ? 'dark' : 'light'}:bg-white hover:bg-gray-200  dark:${index % 2 === 0 ? 'odd' : 'even'}:bg-gray-800 dark:hover:bg-gray-700 `}>
-                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.nama}</td>
-                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.alamat}</td>
-                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.items.length}</td>
-                            {order.statusditerima == "belum diterima" && (
-                              <td className="px-1 py-4 whitespace-nowrap text-sm text-red-800">{order.statusditerima}</td>
-                            )}
-                            {order.statusditerima == "terkirim" && (
-                              <td className="px-1 py-4 whitespace-nowrap text-sm text-green-600">{order.statusditerima}</td>
-                            )}
-                            {order.statusbayar == "dibayar" && (
-                              <td className="px-1 py-4 whitespace-nowrap text-sm text-green-600">{order.statusbayar}</td>
-                            )}
-                          {order.statusbayar =="pending" && (
-                              <td className="px-1 py-4 whitespace-nowrap text-sm text-red-800">{order.statusbayar}</td>
-                            )}
-                          <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.tglorder}</td>
-                          <td className="px-1 py-4 whitespace-nowrap text-start text-sm font-medium">
-                            <button
-                              type="button"
-                              className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-green-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-                              onClick={() => navigate(`/orders/${order._id}`)}
+                        {record.map((order, index) => (
+                          (order.statusditerima !== "terkirim" || order.statusbayar !== "dibayar") && ( // Tambahkan kondisi baru di sini
+                            <tr
+                              key={index}
+                              className={`${index % 2 === 0 ? "dark" : "light"}:bg-white hover:bg-gray-200  dark:${
+                                index % 2 === 0 ? "odd" : "even"
+                              }:bg-gray-800 `}
                             >
-                              Detail
-                            </button>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
+                              <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.nama}</td>
+                              <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.alamat}</td>
+                              <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.items.length}</td>
+                              {order.statusditerima === "belum diterima" && (
+                                <td className="px-1 py-4 whitespace-nowrap text-sm text-red-800">{order.statusditerima}</td>
+                              )}
+                              {order.statusbayar === "pending" && (
+                                <td className="px-1 py-4 whitespace-nowrap text-sm text-red-800">{order.statusbayar}</td>
+                              )}
+                              {order.statusditerima === "terkirim" && (
+                                <td className="px-1 py-4 whitespace-nowrap text-sm text-green-500">{order.statusditerima}</td>
+                              )}
+                              {order.statusbayar === "dibayar" && (
+                                <td className="px-1 py-4 whitespace-nowrap text-sm text-green-500">{order.statusbayar}</td>
+                              )}
+                              <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.tglorder}</td>
+                              <td className="px-1 py-4 whitespace-nowrap text-start text-sm font-medium">
+                                <button
+                                  type="button"
+                                  className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-green-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                  onClick={() => navigate(`/orders/${order._id}`)}
+                                >
+                                  Detail
+                                </button>
+                              </td>
+                            </tr>
+                          )
+                        ))}
+                      </tbody>
+
                   </table>
                 </div>
               </div>

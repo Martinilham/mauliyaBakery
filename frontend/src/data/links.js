@@ -58,10 +58,6 @@ export const links = [
         name: "All Orders",
         url: "/orders",
       },
-      {
-        name: "Order Template",
-        url: "/orders/template",
-      },
     ],
   },
   {
