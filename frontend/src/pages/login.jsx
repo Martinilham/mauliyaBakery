@@ -4,8 +4,8 @@ import axios from "axios"
 
 function Login() {
 
-  const [nama,setnama] = useState("")
-  const [password,setpassword] = useState("")
+  const [nama,setnama] = useState("rahma")
+  const [password,setpassword] = useState("wer1234ui")
   const navigate = useNavigate();
 
   
