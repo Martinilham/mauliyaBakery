@@ -41,7 +41,9 @@ const SingleProduct = () => {
   return (
     <Layout>
       <Box sx={{ pt: "80px", pb: "20px" }}>
-        <Paper
+        <div className="flex flex-row">
+          <div className="flex-auto w-72">
+          <Paper
           sx={{
             boxShadow: "none !important",
             borderRadius: "12px",
@@ -52,9 +54,6 @@ const SingleProduct = () => {
           }}
         >
           <div>
-            <h1>Order Detail</h1>
-            <p>Order ID: {order._id}</p>
-            <p>Customer Name: {order.nama}</p>
             <ul>
               {order.items.map((item, index) => (
                 <li key={index}>
@@ -66,6 +65,31 @@ const SingleProduct = () => {
             <p>Status: {order.statusbayar}</p>
           </div>
         </Paper>
+          </div>
+          <div className="flex-auto w-24 ml-10">
+          <Paper
+          sx={{
+            boxShadow: "none !important",
+            borderRadius: "12px",
+            borderStyle: "solid",
+            borderWidth: "1px",
+            borderColor: "divider",
+            p: "20px",
+          }}
+        >
+          <div>
+            <h1>Informasi Umum</h1>
+            <p>Order ID: {order._id}</p>
+            <p>Customer Name: {order.namapemesan}</p>
+            <p>Status: {order.statusbayar}</p>
+            
+            <hr/>
+            <p>{order.alamat}</p>
+          </div>
+        </Paper>
+          </div>
+
+        </div>
       </Box>
     </Layout>
   );

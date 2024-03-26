@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Layout from "./Layout";
 import axios from "axios";
-import PopUp from "./PopUp";
 import { useNavigate } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
 
@@ -91,14 +90,14 @@ const Products = () => {
                     </thead>
                     <tbody>
                         {record.map((order, index) => (
-                          (order.statusditerima !== "terkirim" || order.statusbayar !== "dibayar") && ( // Tambahkan kondisi baru di sini
+                          (order.statusditerima !== "terkirim" || order.statusbayar !== "di bayar") && (
                             <tr
                               key={index}
                               className={`${index % 2 === 0 ? "dark" : "light"}:bg-white hover:bg-gray-200  dark:${
                                 index % 2 === 0 ? "odd" : "even"
                               }:bg-gray-800 `}
                             >
-                              <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.nama}</td>
+                              <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.namapemesan}</td>
                               <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.alamat}</td>
                               <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.items.length}</td>
                               {order.statusditerima === "belum diterima" && (
@@ -110,10 +109,16 @@ const Products = () => {
                               {order.statusditerima === "terkirim" && (
                                 <td className="px-1 py-4 whitespace-nowrap text-sm text-green-500">{order.statusditerima}</td>
                               )}
-                              {order.statusbayar === "dibayar" && (
+                              {order.statusbayar === "di bayar" && (
                                 <td className="px-1 py-4 whitespace-nowrap text-sm text-green-500">{order.statusbayar}</td>
                               )}
-                              <td className="px-1 py-4 whitespace-nowrap text-sm ">{order.tglorder}</td>
+                              <td className="px-1 py-4 whitespace-nowrap text-sm ">
+                              {new Date(order.tglorder).toLocaleDateString("id-ID", {
+                                  day: "numeric",
+                                  month: "long",
+                                  year: "numeric",
+                                })}
+                                </td>
                               <td className="px-1 py-4 whitespace-nowrap text-start text-sm font-medium">
                                 <button
                                   type="button"

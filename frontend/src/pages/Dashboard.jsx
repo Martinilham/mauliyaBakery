@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { Box, Grid, Paper, Typography } from "@mui/material";
 import React from "react";
-import BarChart from "../components/home/charts/BarChart";
 import Stats from "../components/home/stats/Stats";
 import SalesReportChart from "../components/sales/charts/SalesReportChart";
 import {
@@ -9,7 +8,7 @@ import {
   salesReportPieChartOptions,
 } from "../data/chartData";
 import Layout from "./Layout";
-import BarsDataset from "../components/sales/charts/newBarChart";
+import SalesBarChart from "../components/sales/charts/newBarChart";
 
 const Dashboard = () => {
   const ComponentWrapper = styled(Box)({
@@ -38,7 +37,7 @@ const Dashboard = () => {
                 height: "100%",
               }}
             >
-            <BarsDataset
+            <SalesBarChart
             width="100%"
             height="100%"
             />

@@ -10,45 +10,45 @@
 #     "discount" : 10
 # }
 
-POST http://localhost:5000/user 
-Content-Type: application/json
-
-{
-    "nama": "bayus",
-    "namalengkap":"bayu satria",
-    "email": "bayu@gmail.com",
-    "statususer": "client",
-    "alamat": "madiun",
-    "notlpn": "08951271261124",
-    "password": "wer1234ui"
-}
-
-# POST http://localhost:5000/pesanan
+# POST http://localhost:5000/user 
 # Content-Type: application/json
 
 # {
-#     "idpemesan": "65d62a0bf4887c71539eee90",
-#     "nama": "65d62a0bf4887c71539eee90",
-#     "items": [
-#         {
-#             "produk_id": "65db674b4897250bac800724",
-#             "namaproduk": "namaproduk._id",
-#             "harga": 5000,
-#             "jumlah": 2
-#         },
-#         {
-            
-#             "produk_id": "65db67854897250bac800726",
-#             "namaproduk": "namaproduk._id",
-#             "harga": 5000,
-#             "jumlah": 2
-#         }
-#     ],
-#     "alamat": "alamat._id",
-#     "notlpn": "notlpn._id",
-#     "total": 10000,
-#     "statusbayar": "pending",
-#     "statusditerima": "belum diterima",
-#     "tglorder": "04-02-2024"
-
+#     "nama": "bayus",
+#     "namalengkap":"bayu satria",
+#     "email": "bayu@gmail.com",
+#     "statususer": "client",
+#     "alamat": "madiun",
+#     "notlpn": "08951271261124",
+#     "password": "wer1234ui"
 # }
+
+POST http://localhost:5000/pesanan
+Content-Type: application/json
+
+{
+    "idpemesan": "65d62a0bf4887c71539eee90",
+    "namapemesan": "rahma",
+    "items": [
+        {
+            "produk_id": "65db674b4897250bac800724",
+            "namaproduk": "kue panas",
+            "kategori":"Kue Basah",
+            "harga": 10000,
+            "jumlah": 2
+        },
+        {
+            
+            "produk_id": "65db67854897250bac800726",
+            "namaproduk": "kue coklat",
+            "kategori":"Kue Kering",
+            "harga": 5000,
+            "jumlah": 2
+        }
+    ],
+    "alamat": "jalan maospati",
+    "notlpn": "0896671212",
+    "total": 10000,
+    "statusbayar": "di bayar",
+    "statusditerima": "belum diterima",
+}

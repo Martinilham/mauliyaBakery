@@ -3,6 +3,7 @@ const router = new express.Router();
 import multer from "multer"
 import Produk from "../models/produkModels.js"
 import moment from "moment"
+import fs from "fs"
 import cloudinary from '../cloudinary.js'
 
 
@@ -12,7 +13,6 @@ const imgconfig = multer.diskStorage({
     }
 });
 
-// img filter
 const isImage = (req,file,callback)=>{
     if(file.mimetype.startsWith("image")){
         callback(null,true)
@@ -81,8 +81,9 @@ router.get("/getdata/:id",async(req,res)=>{
         res.status(401).json({status:401,error})
     }
 });
-
-router.patch("/getdata/:id",async(req,res)=>{
+  
+  // Route for updating product data
+  router.patch("/getdata/:id",async(req,res)=>{
     try {
         const updatedBarang = await Produk.updateOne({_id:req.params.id}, {$set: req.body});
         res.status(200).json(updatedBarang);
@@ -90,8 +91,6 @@ router.patch("/getdata/:id",async(req,res)=>{
         res.status(401).json({status:401,error})
     }
 });
-
-
 
 router.delete("/getdata/:id",async(req,res)=>{
 

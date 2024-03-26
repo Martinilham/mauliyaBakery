@@ -16,6 +16,10 @@ const Pesanan = mongoose.Schema({
                 type:String,
                 required:true,
             },
+            kategori:{
+                type:String,
+                required:true,
+            },
             harga:{
                 type:Number,
                 required:true,
@@ -47,8 +51,7 @@ const Pesanan = mongoose.Schema({
         required:true
     },
     tglorder: {
-        type:String,
-        required:true
+        type:Date
     },
 
 });

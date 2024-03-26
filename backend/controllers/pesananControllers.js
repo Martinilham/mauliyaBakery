@@ -1,5 +1,5 @@
 import Pesanan from "../models/pesananModels.js";
-
+import moment from "moment-timezone";
 export const getPesanan = async (req, res) => {
     try {
         const pesanan = await Pesanan.find();
@@ -19,14 +19,39 @@ export const getpesananById = async (req, res) => {
 }
 
 export const savePesanan = async (req, res) => {
-    const pesanan = new Pesanan(req.body);
+    const { idpemesan, namapemesan, items:[{ produk_id, namaproduk, kategori, harga, jumlah }], alamat, notlpn, total, statusbayar, statusditerima } = req.body;
     try {
-        const buatPesanan = await pesanan.save();
-        res.status(201).json(buatPesanan);
+        const waktuWIB = moment().tz('Asia/Jakarta');
+        const formattedDateTime = waktuWIB.format('DD MMMM YYYY HH:mm:ss', 'id');
+        const pesanan = new Pesanan({
+            idpemesan: idpemesan,
+            namapemesan: namapemesan,
+            items: [
+                {
+                    produk_id: produk_id,
+                    namaproduk: namaproduk,
+                    kategori: kategori,
+                    harga: harga,
+                    jumlah: jumlah
+                }
+            ],
+            alamat: alamat,
+            notlpn: notlpn,
+            total: total,
+            statusbayar: statusbayar,
+            statusditerima: statusditerima,
+            tglorder: formattedDateTime
+        });
+
+        const finaldata = await pesanan.save();
+
+        res.status(201).json({ status: 201, finaldata });
     } catch (error) {
-        res.status(400).json({message: error.message});
+        console.error('Error saving pesanan:', error); 
+        res.status(500).json({ status: 500, error: 'Internal server error' });
     }
-}
+};
+
 
 export const updatePesanan = async (req, res) => {
     try {

@@ -1,6 +1,9 @@
 import { FiShoppingBag, FiUsers } from "react-icons/fi";
 import { BsCurrencyDollar } from "react-icons/bs";
 
+
+
+
 export const stats = [
   {
     id: 1,
