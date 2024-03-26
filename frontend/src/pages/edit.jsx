@@ -30,7 +30,7 @@ function Edit() {
     const updateBarang = async (e) => {
         e.preventDefault();
         try {
-          await axios.patch(`http://localhost:5000/getdata/${id}`, {
+          await axios.patch(`https://mauliya-bakeryserve.vercel.app/getdata/${id}`, {
             fname:produk,
             kategori,
             deskripsi,
