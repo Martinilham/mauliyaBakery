@@ -63,6 +63,7 @@ const handleLogin =  async (event) => {
               class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               name="email"
               id="email"
+placeholder="rahma"
               value={nama}
               onChange={(e) => setnama(e.target.value)}
             />
@@ -74,6 +75,7 @@ const handleLogin =  async (event) => {
               name="pass"
               id="pass"
               class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
+placeholder="wer1234ui"
               value={password}
               onChange={(e) => setpassword(e.target.value)}
             />
