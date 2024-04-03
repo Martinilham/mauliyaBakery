@@ -3,7 +3,6 @@ const router = new express.Router();
 import multer from "multer"
 import Produk from "../models/produkModels.js"
 import moment from "moment"
-import fs from "fs"
 import cloudinary from '../cloudinary.js'
 
 
@@ -82,30 +81,76 @@ router.get("/getdata/:id",async(req,res)=>{
     }
 });
   
-  // Route for updating product data
-  router.patch("/getdata/:id",async(req,res)=>{
+// router.patch("/getdata/:id",async(req,res)=>{
+//     try {
+//         const updatedBarang = await Produk.updateOne({_id:req.params.id}, {$set: req.body});
+//         res.status(200).json(updatedBarang);
+//     } catch (error) {
+//         res.status(401).json({status:401,error})
+//     }
+// });
+
+router.put("/getdata/:id", upload.single("photo"), async (req, res) => {
     try {
-        const updatedBarang = await Produk.updateOne({_id:req.params.id}, {$set: req.body});
-        res.status(200).json(updatedBarang);
-    } catch (error) {
-        res.status(401).json({status:401,error})
+      let produk = await Produk.findById(req.params.id);
+        const imgurl = produk.imgpath;
+        const urlArray = imgurl.split("/")
+        const image = urlArray[urlArray.length-1];
+        const imageName =image.split(".")[0];
+      await cloudinary.uploader.destroy(imageName);
+  
+      let result;
+      if (req.file) {
+        result = await cloudinary.uploader.upload(req.file.path);
+      }
+
+      const data = {
+        name: req.body.fname || produk.name,
+        deskripsi: req.body.deskripsi || produk.deskripsi,
+        kategori: req.body.kategori || produk.kategori,
+        jumlah: req.body.jumlah || produk.jumlah,
+        harga: req.body.harga || produk.harga,
+        imgpath: result?.secure_url || produk.imgpath,
+      };
+
+      produk = await Produk.findByIdAndUpdate(req.params.id, data, { new: true });
+      res.json(produk);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: "Internal Server Error" });
     }
 });
 
-router.delete("/getdata/:id",async(req,res)=>{
+  
 
+
+router.delete("/getdata/:id", async (req, res) => {
     try {
-        const {id} = req.params;
+        
+      let product = await Produk.findById(req.params.id);
+      const imgurl = product.imgpath;
+      const urlArray = imgurl.split("/")
+    const image = urlArray[urlArray.length-1];
+    const imageName =image.split(".")[0]
 
-        const dltUser = await Produk.findByIdAndDelete({_id:id});
+      if (!product) {
+        return res
+          .status(404)
+          .json({ success: false, message: "Product not found" });
+      }
+  
 
-        res.status(201).json({status:201,dltUser});
+      await cloudinary.uploader.destroy(imageName);
 
-    } catch (error) {
-        res.status(401).json({status:401,error})
+      await product.deleteOne();
+  
+      res.json(product);
+    } catch (err) {
+      console.error(err);
+      res.status(500).json({ success: false, message: "Internal Server Error" });
     }
-
-})
+  });
+  
 
 
 export default router

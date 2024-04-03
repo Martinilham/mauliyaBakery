@@ -18,7 +18,7 @@ const Products = () => {
   const deleteProduk = async (id) => {
     setIsOpen(false);
     try {
-      await axios.delete(`https://mauliya-bakeryserve.vercel.app/getdata/${id}`);
+      await axios.delete(`http://localhost:5000/getdata/${id}`);
       getUserData();
     } catch (error) {
       console.error("Error deleting product:", error);

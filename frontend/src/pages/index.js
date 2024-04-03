@@ -14,4 +14,3 @@ export { default as Login } from "./login";
 export { default as UserProfil } from "./userProfil";
 export { default as Popup } from "./PopUp";
 export { default as Edit } from "./edit"
-export { default as Detailpesanan } from "./detailpesanan"
