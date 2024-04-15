@@ -36,8 +36,15 @@ const Products = () => {
     getUserData();
   }, []);
 
-    console.log(record)
-  
+  if (!data) {
+    return (
+      <Layout>
+        <Box sx={{ pt: "80px", pb: "20px" }}>
+          <p>Loading...</p>
+        </Box>
+      </Layout>
+    );
+  }
 
   return (
     <Layout>
@@ -86,6 +93,7 @@ const Products = () => {
                         <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Status Bayar</th>
                         <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Tanggal</th>
                         <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Detail</th>
+                        <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Action</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -128,6 +136,15 @@ const Products = () => {
                                   Detail
                                 </button>
                               </td>
+                                <td>
+                                <button
+                                  type="button"
+                                  className="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-red-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                                  onClick={() => navigate(`/orders/${order._id}`)}
+                                >
+                                  Delete
+                                </button>
+                                </td>
                             </tr>
                           )
                         ))}

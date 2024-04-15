@@ -4,7 +4,6 @@ import axios from "axios";
 import PopUp from "./PopUp";
 import { useNavigate } from "react-router-dom";
 import { Box, Paper } from "@mui/material";
-import Search from "../components/common/search";
 
 const Products = () => {
   const [data, setData] = useState([]);
@@ -92,26 +91,26 @@ const Products = () => {
           }}
         >
           
-          <div className="flex flex-col">
-            <div className="-m-1.5 overflow-x-auto">
-              <div className="p-1.5 min-w-full inline-block align-middle">
-                <div className="overflow-hidden">
-                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                    <thead>
+          <div className="flex flex-col ">
+            <div className="-m-2 overflow-x-auto ">
+              <div className="p-2 min-w-full inline-block align-middle">
+                <div className="overflow-hidden border-2 border-gray-600 rounded-md">
+                  <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700 " >
+                    <thead style={{ backgroundColor: "#13189a"}}>
                       <tr>
-                        <th scope="col" className="px-3 py-3 text-start text-xs font-medium text-gray-500 uppercase">Gambar</th>
-                        <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Edit</th>
-                        <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-gray-500 uppercase">Hapus</th>
-                        <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nama</th>
-                        <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Deskripsi</th>
-                        <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Kategori</th>
+                        <th scope="col" className="px-3 py-3 text-start text-xs font-medium text-white uppercase">Gambar</th>
+                        <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-white uppercase">Edit</th>
+                        <th scope="col" className="px-1 py-3 text-start text-xs font-medium text-white uppercase">Hapus</th>
+                        <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-white uppercase">Nama</th>
+                        <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-white uppercase">Deskripsi</th>
+                        <th scope="col" className="px-6 py-3 text-start text-xs font-medium text-white uppercase">Kategori</th>
                       </tr>
                     </thead>
                     <tbody>
                       {record.map((barang, index) => (
                         <tr key={index} className={`${index % 2 === 0 ? 'dark' : 'light'}:bg-white hover:bg-gray-200  dark:${index % 2 === 0 ? 'odd' : 'even'}:bg-gray-800 dark:hover:bg-gray-700 `}>
                           <td className="px-3 py-4  text-sm font-medium ">
-                            <img src={barang.imgpath} alt={barang.namaproduk} style={{ maxWidth: "80px" }} />
+                            <img src={barang.imgpath} alt={barang.namaproduk} style={{ maxWidth: "60px" ,height: "60px"}} />
                           </td>
                           <td className="px-1 py-4 whitespace-nowrap text-start text-sm font-medium">
                             <button
@@ -151,14 +150,14 @@ const Products = () => {
             {data.map((barang) => barang._id === deleteItemId && (
               <div key={barang._id}>
                 <img className="m-auto" src={barang.imgpath} alt={barang.namaproduk} style={{ maxWidth: "100px" }} />
-                <p className="mt-4 text-center">{barang.fname}</p>
-                <button
-                  type="button"
-                  className="inline-flex items-center text-center text-sm font-semibold rounded-md border border-red-500 bg-red-500 text-white hover:text-red-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
+                <p className="mt-4 text-center text-lg mb-2">{barang.fname}</p>
+                <button 
+                  type="button" class="py-2 px-4 flex justify-center items-center  bg-red-600 hover:bg-red-700 focus:ring-red-500 focus:ring-offset-red-200 text-white w-full transition ease-in duration-200 text-center text-base font-semibold shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2  rounded-lg "
                   onClick={() => deleteProduk(barang._id)}
                 >
-                  Delete
-                </button>
+                  Hapus
+                  </button>
+                
               </div>
             ))}
           </>

@@ -8,7 +8,6 @@ const Sidebar = ({ window, sideBarWidth, mobileOpen, handleDrawerToggle }) => {
   const drawer = (
     <div>
       <Toolbar>
-        <img src="/logo.png" alt="Logo" width="40" />
         <Typography variant="h6" sx={{ fontWeight: "bold", ml: 2 }}>
           Maulia Bakery
         </Typography>

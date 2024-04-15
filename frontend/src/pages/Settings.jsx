@@ -4,6 +4,7 @@ import { useState } from "react";
 import Notifications from "../components/settings/Notifications";
 import Password from "../components/settings/Password";
 import Profile from "../components/settings/Profile";
+import Layout from "./Layout";
 
 function TabPanel(props) {
   const { children, value, index, ...other } = props;
@@ -46,7 +47,8 @@ const Settings = () => {
   };
 
   return (
-    <Box sx={{ pt: "80px", pb: "20px" }}>
+    <Layout>
+      <Box sx={{ pt: "80px", pb: "20px" }}>
       <Paper
         sx={{
           boxShadow: "none !important",
@@ -83,6 +85,7 @@ const Settings = () => {
         </Box>
       </Paper>
     </Box>
+    </Layout>
   );
 };
 

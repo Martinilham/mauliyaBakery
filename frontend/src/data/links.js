@@ -1,25 +1,13 @@
-import { BsCurrencyDollar } from "react-icons/bs";
-import { FaHandshake, FaShare } from "react-icons/fa";
-import {
-  FiHome,
-  FiLayers,
-  FiMail,
-  FiMessageCircle,
-  FiSettings,
-  FiShoppingBag,
-  FiShoppingCart,
-  FiUsers,
-} from "react-icons/fi";
 
 export const links = [
   {
     name: "Dashboard",
-    icon: <FiHome />,
+    icon: "dashboard.png",
     url: "/dashboard",
   },
   {
     name: "Products",
-    icon: <FiShoppingBag />,
+    icon: "box.png",
     subLinks: [
       {
         name: "All Products",
@@ -33,12 +21,12 @@ export const links = [
   },
   {
     name: "Customers",
-    icon: <FiUsers />,
+    icon: "dashboard.png",
     url: "/customers",
   },
   {
     name: "Sales",
-    icon: <BsCurrencyDollar />,
+    icon: "dashboard.png",
     subLinks: [
       {
         name: "Sales Analytics",
@@ -52,7 +40,7 @@ export const links = [
   },
   {
     name: "Orders",
-    icon: <FiShoppingCart />,
+    icon: "dashboard.png",
     subLinks: [
       {
         name: "All Orders",
@@ -62,17 +50,17 @@ export const links = [
   },
   {
     name: "Transactions",
-    icon: <FaHandshake />,
+    icon: "transaction.png",
     url: "/transactions",
   },
   {
     name: "Reviews",
-    icon: <FiMessageCircle />,
+    icon: "dashboard.png",
     url: "/reviews",
   },
   {
     name: "Settings",
-    icon: <FiSettings />,
+    icon: "dashboard.png",
     url: "/profil",
   },
 ];

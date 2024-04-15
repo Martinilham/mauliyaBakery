@@ -13,10 +13,10 @@ export const getDesignTokens = (mode) => ({
       orangish: "#ffa071",
     },
     sidebar: {
-      background: "#111827",
-      hoverBg: "#172032",
+      background: "#415dc0",
+      hoverBg: "#415dc0",
       hoverMobile: "#3f4554",
-      textColor: "#949ca9",
+      textColor: "black",
     },
     status: {
       red: "#fc424a",
@@ -28,7 +28,7 @@ export const getDesignTokens = (mode) => ({
       ? {
         sidebar: {
           background: "white",
-          hoverBg: "rgb(244,247,254)",
+          hoverBg: "grey",
           hoverMobile: "#3f4554",
           textColor: "black",
         },
@@ -39,7 +39,7 @@ export const getDesignTokens = (mode) => ({
           },
           text: {
             primary: "#5f6470",
-            secondary: grey[700],
+            secondary: "black",
           },
           divider: "rgba(129, 139, 156, 0.1)",
           chatBox: "#dfe5f1",

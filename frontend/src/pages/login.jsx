@@ -1,5 +1,5 @@
 import React, { useState ,useEffect} from 'react';
-import { useNavigate } from 'react-router-dom'
+import { useNavigate , Link } from 'react-router-dom'
 import axios from "axios"
 
 function Login() {
@@ -47,7 +47,7 @@ const handleLogin =  async (event) => {
   return (
 <div class="flex items-center justify-center min-h-screen bg-gray-100">
       <div
-        class="relative flex flex-col m-6 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
+        class="relative flex flex-col m-8 space-y-8 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0"
       >
         {/* <!-- left side --> */}
         <form onSubmit={handleLogin}>
@@ -63,7 +63,7 @@ const handleLogin =  async (event) => {
               class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
               name="email"
               id="email"
-placeholder="rahma"
+              placeholder="rahma"
               value={nama}
               onChange={(e) => setnama(e.target.value)}
             />
@@ -75,34 +75,20 @@ placeholder="rahma"
               name="pass"
               id="pass"
               class="w-full p-2 border border-gray-300 rounded-md placeholder:font-light placeholder:text-gray-500"
-placeholder="wer1234ui"
+              placeholder="wer1234ui"
               value={password}
               onChange={(e) => setpassword(e.target.value)}
             />
           </div>
-          <div class="flex justify-between w-full py-4">
-            <div class="mr-24">
-              <input type="checkbox" name="ch" id="ch" class="mr-2" />
-              <span class="text-md">Remember for 30 days</span>
-            </div>
-            <span class="font-bold text-md">Forgot password</span>
+          <div class="flex justify-between w-full py-2">
+            <span class="font-bold text-md"><Link>Lupa password</Link></span>
           </div>
+          <div class="border-2 text-center border-blue-600 rounded-lg px-3 py-2 text-blue-400 cursor-pointer hover:bg-blue-600 hover:text-blue-100">
           <button
-            class="w-full bg-black text-white p-2 rounded-lg mb-6 hover:bg-white hover:text-black hover:border hover:border-gray-300"
             type='submit'
-          >
-            Sign in
-          </button>
-          <button
-            class="w-full border border-gray-300 text-md p-2 rounded-lg mb-6 hover:bg-black hover:text-white"
-          >
-            <img src="google.svg" alt="img" class="w-6 h-6 inline mr-2" />
-            Sign in with Google
-          </button>
-          <div class="text-center text-gray-400">
-            Dont'have an account?
-            <span class="font-bold text-black">Sign up for free</span>
-          </div>
+          >Login</button> 
+        </div>
+
         </div>
         </form>
         
@@ -113,14 +99,14 @@ placeholder="wer1234ui"
             class="w-[400px] h-full hidden rounded-r-2xl md:block  object-fill"
           />
          
-          <div
+          {/* <div
             class="absolute hidden bottom-10 right-6 p-6 bg-white bg-opacity-30 backdrop-blur-sm rounded drop-shadow-lg md:block"
           >
             <span class="text-white text-xl"
-              >We've been uesing Untitle to kick"<br />start every new project
+              ><br />start every new project
               and can't <br />imagine working without it."
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

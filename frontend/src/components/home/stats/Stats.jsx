@@ -1,9 +1,8 @@
 import styled from "@emotion/styled";
 import { Box, Grid, IconButton, Paper, Typography } from "@mui/material";
 import React from "react";
-import { lineChartData, lineChartOptions } from "../../../data/chartData.js";
 import { stats } from "../../../data/stats.js";
-import LineChart from "../charts/LineChart";
+
 
 
 const Stats = () => {

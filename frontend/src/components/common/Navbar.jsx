@@ -1,95 +1,53 @@
-import {
-  AppBar,
-  Badge,
-  Box,
-  IconButton,
-  Stack,
-  Toolbar,
-  Tooltip,
-  Typography,
-  useTheme,
-} from "@mui/material";
-import React from "react";
-import { BsBell } from "react-icons/bs";
+import React, { useState } from "react";
 import { FiMenu, FiMoon, FiSun } from "react-icons/fi";
-import { useColorTheme } from "../../contexts/ThemeContext";
+import { BsBell } from "react-icons/bs";
 import ProfileMenu from "./ProfileMenu";
+import Layout from "../../pages/Layout"
 
 const Navbar = ({ sideBarWidth, handleDrawerToggle }) => {
-  const colorMode = useColorTheme();
-  const theme = useTheme();
+  const [currentTheme, setCurrentTheme] = useState("light");
 
-  const currentTheme = theme.palette.mode;
-  
+  const toggleDarkMode = () => {
+    const newTheme = currentTheme === "light" ? "dark" : "light";
+    setCurrentTheme(newTheme);
+    document.documentElement.classList.toggle('dark');
+  };
+
   return (
-    <AppBar
-      position="fixed"
-      sx={{
-        width: { md: `calc(100% - ${sideBarWidth}px)` },
-        ml: { md: `${sideBarWidth}px` },
-        boxShadow: "unset",
-        backgroundColor: "background.paper",
-        color: "text.primary",
-        borderBottomWidth: 1,
-        borderBottomColor: "divider",
-      }}
-    >
-      <Toolbar>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            width: "100%",
-          }}
-        >
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              gap: 1,
-            }}
-          >
-            <Tooltip title="Menu" arrow>
-              <IconButton
-                aria-label="open drawer"
-                edge="start"
-                onClick={handleDrawerToggle}
-                sx={{ mr: 2, display: { md: "none" } }}
-              >
-                <FiMenu />
-              </IconButton>
-            </Tooltip>
 
-            <Typography
-              variant="h5"
-              sx={{ display: { xs: "none", sm: "block" } }}
+      <header className={`z-10 backdrop-blur-md md:backdrop-blur-md bg-white/30 md:bg-white/30 md:mx-0 md:my-0  my-3 rounded-3xl mx-3 fixed bg-white md:bg-white  md:w-full w-96 bg-background-paper  dark:bg-black ${currentTheme === "dark" ? "dark:bg-gray-900" : ""} text-text-primary ${currentTheme === "dark" ? "dark:text-white" : ""} border-b border-divider`}>
+      <div className="container mx-auto">
+        <div className="flex justify-between items-center py-3">
+          <div className="flex items-center space-x-2">
+            <button
+              onClick={handleDrawerToggle}
+              className="ml-4 md:hidden text-2xl text-text-primary dark:text-white"
             >
+              <FiMenu />
+            </button>
+            <h1 className="text-lg sm:text-xl font-semibold md:block">
               Dashboard
-            </Typography>
-          </Box>
-          <Stack direction="row" spacing={1} alignItems="center">
-            <Tooltip title="Notifications" arrow>
-              <IconButton sx={{ fontSize: "20px", color: "text.primary" }}>
-                <Badge color="error" variant="dot">
-                  <BsBell />
-                </Badge>
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Toggle Theme" arrow>
-              <IconButton
-                onClick={colorMode.toggleColorMode}
-                sx={{ fontSize: "20px", color: "text.primary" }}
-              >
-                {currentTheme === "light" ? <FiMoon /> : <FiSun />}
-              </IconButton>
-            </Tooltip>
-
+            </h1>
+          </div>
+          <div className="flex items-center space-x-2">
+            <button className="text-2xl text-text-primary dark:text-white">
+              <span className="relative">
+                <BsBell />
+                <span className="absolute top-0 right-0 bg-error w-2 h-2 rounded-full"></span>
+              </span>
+            </button>
+            <button
+              onClick={toggleDarkMode}
+              className="text-2xl text-text-primary dark:text-white"
+            >
+              {currentTheme === "light" ? <FiMoon /> : <FiSun />}
+            </button>
             <ProfileMenu />
-          </Stack>
-        </Box>
-      </Toolbar>
-    </AppBar>
+          </div>
+        </div>
+      </div>
+    </header>
+
   );
 };
 

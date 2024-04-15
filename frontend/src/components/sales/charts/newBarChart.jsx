@@ -16,14 +16,14 @@ function SalesBarChart() {
         }
         const data = await response.json();
 
-        // Proses data untuk menghitung total penjualan per kategori (Roti Kering dan Roti Basah) per bulan
+        
         const monthlySales = {};
         data.forEach(order => {
           const yearMonth = order.tglorder.split('-').slice(0, 2).join('-'); // Ambil tahun dan bulan dari tanggal order
           if (!monthlySales[yearMonth]) {
             monthlySales[yearMonth] = { "Roti Kering": 0, "Roti Basah": 0 };
           }
-          // Tambahkan total harga dari setiap item pesanan ke total penjualan kategori yang sesuai
+          
           order.items.forEach(item => {
             if (item.kategori === "Kue Kering") {
               monthlySales[yearMonth]["Roti Kering"] += item.harga * item.jumlah;
@@ -33,7 +33,7 @@ function SalesBarChart() {
           });
         });
 
-        // Ubah data ke dalam format yang sesuai dengan BarChart
+        
         const formattedData = Object.keys(monthlySales)
           .map(yearMonth => ({
             yearMonth,
@@ -50,7 +50,7 @@ function SalesBarChart() {
     fetchData();
   }, []);
 
-  // Fungsi untuk menampilkan data sesuai halaman yang dipilih
+  
   const displayData = () => {
     const startIndex = (currentPage - 1) * itemsPerPage;
     const endIndex = startIndex + itemsPerPage;

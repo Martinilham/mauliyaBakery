@@ -22,7 +22,7 @@ const SingleProduct = () => {
     getorderById(id);
   }, [id]);    
 
-  console.log(order)
+  
   if (!order) {
     return (
       <Layout>
@@ -33,7 +33,7 @@ const SingleProduct = () => {
     );
   }
 
-  // Calculate total amount
+  
   const totalAmount = order.items.reduce((total, item) => {
     return total + (item.harga * item.jumlah);
   }, 0);

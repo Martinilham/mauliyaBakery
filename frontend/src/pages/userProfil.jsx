@@ -3,6 +3,7 @@ import { Box, Typography } from "@mui/material";
 import React from 'react'
 import axios from "axios";
 import { jwtDecode as jwt_decode } from 'jwt-decode';
+import Layout from "./Layout";
 
 
 function UserProfil() {
@@ -22,12 +23,11 @@ function UserProfil() {
     }, []);
     console.log(dataAdmin.userName)
     return (
-        <Box sx={{ pt: "80px", pb: "20px" }}>
+       <Layout>
+         <Box sx={{ pt: "80px", pb: "20px" }}>
                     <Typography variant="h4">Nama: {dataAdmin.userName}</Typography>
-                    
-
-           
         </Box>
+       </Layout>
        
     );
 }

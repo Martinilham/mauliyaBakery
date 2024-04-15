@@ -1,89 +1,47 @@
-import styled from "@emotion/styled";
-import {
-  Collapse,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
-import React from "react";
-import { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { FiChevronDown, FiChevronUp } from "react-icons/fi";
 import { NavLink, useLocation } from "react-router-dom";
 
 const SidebarItemCollapse = ({ name, icon, url, subLinks }) => {
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
   const currentPath = useLocation().pathname;
 
   useEffect(() => {
-    subLinks.forEach((link) => {
-      if (currentPath === link.url) {
-        setOpen(true);
-      }
-    });
+    setOpen(subLinks.some(link => currentPath === link.url));
   }, [currentPath, subLinks]);
 
-  const CustomListItemText = styled(ListItemText)({
-    fontSize: "10px !important",
-    position: "relative",
-    "&::before": {
-      content: '""',
-      position: "absolute",
-      width: "10px",
-      height: "10px",
-      borderRadius: "50%",
-      border: "2px solid #027edd",
-      top: "50%",
-      left: "-20px",
-      transform: "translateY(-50%)",
-    },
-  });
+  // Fungsi untuk menentukan apakah sublink sedang aktif
+  const isSublinkActive = (sublinkUrl) => {
+    return currentPath === sublinkUrl;
+  };
 
   return (
-    <>
-      <ListItemButton
+    <div className="">
+      <button
         onClick={() => setOpen(!open)}
-        sx={{
-          "&:hover": { backgroundColor: "sidebar.hoverBg" },
-          paddingY: "8px",
-          paddingX: "24px",
-        }}
+        className={`flex items-center hover:ml-4 hover:pr-14 hover:bg-gray-300 text-gray-600 my-3 mx-3 py-3 px-8 rounded-md hover:-translate-x-2 hover:transform text-sm ${open ? "bg-blue-50 font-bold hover:bg-none" : " "}`}
       >
-        <ListItemIcon sx={{ color: "sidebar.textColor" }}>{icon}</ListItemIcon>
-        <ListItemText primary={name} sx={{ ml: "-10px" }} />
-        {open ? <FiChevronUp /> : <FiChevronDown />}
-      </ListItemButton>
-      <Collapse in={open} timeout="auto">
-        <List>
-          {subLinks.map(({ name, url }, index) => (
-            <NavLink
-              to={url}
-              style={{ textDecoration: "none" }}
-              key={index}
-              end
-              activeclassname="active"
-            >
-              <ListItemButton
-                className="linkBtn sub-link"
+        <img src={require(`../../../public/assets/${icon}`)} alt="" className="h-5 w-5 mr-2" />
+        <span className="ml-2">{name}</span>
+        {open ? <FiChevronUp className="ml-3 mr-10" /> : <FiChevronDown className="ml-3 mr-10" />}
+      </button>
+      {open && (
+        <div className="origin-top-right right-0 w-56 bg-white z-10 top-full">
+          <div className="py-1" role="menu" aria-orientation="vertical" aria-labelledby="options-menu">
+            {subLinks.map(({ name, url }, index) => (
+              <NavLink
+                to={url}
                 key={index}
-                sx={{
-                  "&:hover": { backgroundColor: "sidebar.hoverBg" },
-                  paddingY: "8px",
-                  paddingLeft: "70px",
-                }}
+                className={`block my-1 mx-3 py-3 px-10 text-sm ${isSublinkActive(url) ? 'text-slate-800 font-bold font-monoBold bg-blue-50' : 'font-mono text-gray-600 hover:text-black hover:bg-gray-300'} rounded-md hover:-translate-x-1 hover:transform`}
+                role="menuitem"
               >
-                <CustomListItemText
-                  primary={name}
-                  sx={{
-                    color: "sidebar.textColor",
-                  }}
-                />
-              </ListItemButton>
-            </NavLink>
-          ))}
-        </List>
-      </Collapse>
-    </>
+                • {name}
+              </NavLink>
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 

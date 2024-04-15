@@ -1,6 +1,4 @@
-* {
-  font-family: "Questrial", sans-serif !important;
-}
+
 
 *::-webkit-scrollbar {
   width: 6px;
@@ -85,27 +83,28 @@ label {
 }
 
 .css-9l5vo-MuiCollapse-wrapperInner .css-10hburv-MuiTypography-root {
-  font-size: 14px !important;
+  font-size: 5px !important;
 }
 
 a.active > .linkBtn {
-  background-color: transparent !important;
+  background-color: #dce3ff !important;
   position: relative;
+  pointer-events: none;
+  color: black;
 }
-
 a.active > .linkBtn::before {
   position: absolute;
   content: "";
   height: 100%;
-  width: 5px;
   left: 0;
   top: 0;
-  background-color: #027edd;
+  color: white;
 }
 
 .link {
-  color: #027edd !important;
+  color: white !important;
   text-decoration: none;
+  font-size: small;
 }
 
 span.Pending {
@@ -136,4 +135,9 @@ span.Cancelled {
   .h-custom-2 {
     height: 100%;
     }
+  }
+
+
+  .backdrop-blur-md {
+    backdrop-filter: blur(8px);
   }
