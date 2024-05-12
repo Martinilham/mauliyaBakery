@@ -105,7 +105,7 @@ router.put("/getdata/:id", upload.single("photo"), async (req, res) => {
       }
 
       const data = {
-        name: req.body.fname || produk.name,
+        name: req.body.fname || produk.fname,
         deskripsi: req.body.deskripsi || produk.deskripsi,
         kategori: req.body.kategori || produk.kategori,
         jumlah: req.body.jumlah || produk.jumlah,

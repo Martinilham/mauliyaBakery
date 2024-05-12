@@ -136,8 +136,3 @@ span.Cancelled {
     height: 100%;
     }
   }
-
-
-  .backdrop-blur-md {
-    backdrop-filter: blur(8px);
-  }

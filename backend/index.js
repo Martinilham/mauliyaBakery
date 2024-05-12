@@ -1,19 +1,13 @@
-// import userRoutes from "./routes/userRoutes.js"
-// import pesananRoutes from "./routes/pesananRoutes.js"
-// require("dotenv").config();
-// import express from "express";
-// const app = express();
-// require("./db/conn");
-// import produkRoutes from "./routes/produkRoutes.js"
-// import cors from "cors"
 
-import userRoutes from "./routes/userRoutes.js"; // Change file extension to .mjs
-import pesananRoutes from "./routes/pesananRoutes.js"; // Change file extension to .mjs
+import userRoutes from "./routes/userRoutes.js"; 
+import pesananRoutes from "./routes/pesananRoutes.js"; 
+import clientroutes from "./routes/clientroutes.js"
+import reviewroutes from "./routes/reviewroutes.js"
 import dotenv from "dotenv";
 import express from "express";
 const app = express();
-import "./database/koneksi.js"; // Change file extension to .mjs
-import produkRoutes from "./routes/produkRoutes.js"; // Change file extension to .mjs
+import "./database/koneksi.js"; 
+import produkRoutes from "./routes/produkRoutes.js";
 import cors from "cors";
 
 dotenv.config();
@@ -26,7 +20,8 @@ app.use(cors())
 app.use(produkRoutes);
 app.use(userRoutes)
 app.use(pesananRoutes)
-
+app.use(clientroutes)
+app.use(reviewroutes)
 
 app.listen(port,()=>{
     console.log(`server start at port no ${port}`)

@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { Routes, Route, BrowserRouter } from "react-router-dom";
 import Box from "@mui/material/Box";
 import Sidebar from "../components/common/Sidebar.jsx";
 
@@ -20,7 +19,6 @@ function Layout({children}) {
         <React.Fragment>
             <Box sx={{ display: "flex" }}>
         <Navbar
-          sideBarWidth={sideBarWidth}
           handleDrawerToggle={handleDrawerToggle}
         />
         <Sidebar
