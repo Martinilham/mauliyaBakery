@@ -62,7 +62,7 @@ export const loginClient = async (req, res) => {
             user = new Client({ nomorTLP,nama });
             await user.save();
         }
-        const token = jwt.sign({ userId: user._id, userName: user.nama }, SECRET_KEY, { expiresIn: '1hr' });
+        const token = jwt.sign({ userId: user._id, userName: user.nama,Notlp:nomorTLP }, SECRET_KEY, { expiresIn: '1hr' });
         
         res.json({ message: 'Login Berhasil', token ,nama, nomorTLP });
     } catch (error) {
