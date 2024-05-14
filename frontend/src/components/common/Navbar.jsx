@@ -16,12 +16,17 @@ const Navbar = ({ sideBarWidth, handleDrawerToggle }) => {
 
   return (
 
+<<<<<<< HEAD
       <header
       className={`mx-3 z-10 block bg-white/30 md:bg-white/5 border-none backdrop-blur-md md:backdrop-blur-md md:w-96 md:rounded-none md:mx-0 md:my-0 my-3 rounded-3xl fixed bg-blue-50 md:bg-white bg-background-paper dark:bg-black ${
         currentTheme === "dark" ? "dark:bg-gray-900" : ""
       } text-text-primary ${currentTheme === "dark" ? "dark:text-white" : ""} border-b border-divider`}
     >
       <div className=" container mx-auto">
+=======
+      <header className={`z-10 backdrop-blur-md md:backdrop-blur-md bg-white/30 md:bg-white/30 md:mx-0 md:my-0  my-3 rounded-3xl mx-3 fixed bg-white md:bg-white  md:w-full w-full bg-background-paper  dark:bg-black ${currentTheme === "dark" ? "dark:bg-gray-900" : ""} text-text-primary ${currentTheme === "dark" ? "dark:text-white" : ""} border-b border-divider`}>
+      <div className="container mx-auto">
+>>>>>>> 6ce297d5d14e58c6a063e7d64ecc44bbed916bf0
         <div className="flex justify-between items-center py-3">
           <div className="flex items-center space-x-2">
             <button
