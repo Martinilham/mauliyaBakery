@@ -55,16 +55,16 @@ export const deleteClient = async (req, res) => {
 
 export const loginClient = async (req, res) => {
     try {
-        const { nomorTLP,nama } = req.body;
+        const { nomorTLP,nama,alamat } = req.body;
         let user = await Client.findOne({ nomorTLP });
 
         if (!user) {
-            user = new Client({ nomorTLP,nama });
+            user = new Client({ nomorTLP,nama ,alamat});
             await user.save();
         }
-        const token = jwt.sign({ userId: user._id, userName: user.nama,Notlp:nomorTLP }, SECRET_KEY, { expiresIn: '1hr' });
+        const token = jwt.sign({ userId: user._id, notlp:user.nomorTLP,userName: user.nama ,alamatClient:user.alamat}, SECRET_KEY, { expiresIn: '1hr' });
         
-        res.json({ message: 'Login Berhasil', token ,nama, nomorTLP });
+        res.json({ message: 'Login Berhasil', token , nomorTLP: user.nomorTLP,nama: user.nama, alamat:user.alamat});
     } catch (error) {
         res.status(500).json({ message: 'Terjadi kesalahan pada server' });
     }

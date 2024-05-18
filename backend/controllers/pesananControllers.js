@@ -30,7 +30,6 @@ export const savePesanan = async (req, res) => {
                 {
                     produk_id: produk_id,
                     namaproduk: namaproduk,
-                    kategori: kategori,
                     harga: harga,
                     jumlah: jumlah
                 }

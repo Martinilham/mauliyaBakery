@@ -16,10 +16,6 @@ const Pesanan = mongoose.Schema({
                 type:String,
                 required:true,
             },
-            kategori:{
-                type:String,
-                required:true,
-            },
             harga:{
                 type:Number,
                 required:true,

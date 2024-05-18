@@ -9,6 +9,10 @@ const Client = mongoose.Schema({
         type:String,
         required:true
     },
+    alamat:{
+        type:String,
+        required:true
+    }
 
 })
 
