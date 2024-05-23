@@ -19,34 +19,27 @@ export const getpesananById = async (req, res) => {
 }
 
 export const savePesanan = async (req, res) => {
-    const { idpemesan, namapemesan, items:[{ produk_id, namaproduk, kategori, harga, jumlah }], alamat, notlpn, total, statusbayar, statusditerima } = req.body;
+    const { idpemesan, namapemesan, items, alamat, notlpn, total, statusbayar, statusditerima, tglorder } = req.body;
+
     try {
-        const waktuWIB = moment().tz('Asia/Jakarta');
-        const formattedDateTime = waktuWIB.format('DD MMMM YYYY HH:mm:ss', 'id');
+        
         const pesanan = new Pesanan({
             idpemesan: idpemesan,
             namapemesan: namapemesan,
-            items: [
-                {
-                    produk_id: produk_id,
-                    namaproduk: namaproduk,
-                    harga: harga,
-                    jumlah: jumlah
-                }
-            ],
+            items: items,  
             alamat: alamat,
             notlpn: notlpn,
             total: total,
             statusbayar: statusbayar,
             statusditerima: statusditerima,
-            tglorder: formattedDateTime
+            tglorder: tglorder
         });
 
         const finaldata = await pesanan.save();
 
         res.status(201).json({ status: 201, finaldata });
     } catch (error) {
-        console.error('Error saving pesanan:', error); 
+        console.error('Error saving pesanan:', error);
         res.status(500).json({ status: 500, error: 'Internal server error' });
     }
 };

@@ -1,31 +1,26 @@
 import mongoose from "mongoose";
 
+
+
+const itemSchema = mongoose.Schema({
+    produk_id: { type: String },
+    namaproduk: { type: String, required: true },
+    harga: { type: Number, required: true },
+    diskon: { type: Number ,required: true},
+    jumlah: { type: Number, required: true }
+});
+
 const Pesanan = mongoose.Schema({
     idpemesan:{
+        type: String 
+    },
+    orderId:{
         type: String 
     },
     namapemesan: {
         type:String
     },
-    items : [
-        {
-            produk_id: { 
-                type: String
-            },
-            namaproduk:{
-                type:String,
-                required:true,
-            },
-            harga:{
-                type:Number,
-                required:true,
-            },
-            jumlah:{
-                type:Number,
-                required:true,
-            }
-        }
-    ],
+    items : [itemSchema],
     alamat:{
         type:String,
         required:true
@@ -47,7 +42,7 @@ const Pesanan = mongoose.Schema({
         required:true
     },
     tglorder: {
-        type:Date
+        type:String
     },
 
 });
