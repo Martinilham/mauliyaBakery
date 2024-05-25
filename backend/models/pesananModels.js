@@ -3,7 +3,6 @@ import mongoose from "mongoose";
 
 
 const itemSchema = mongoose.Schema({
-    produk_id: { type: String },
     namaproduk: { type: String, required: true },
     harga: { type: Number, required: true },
     diskon: { type: Number},
