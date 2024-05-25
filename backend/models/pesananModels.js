@@ -6,7 +6,7 @@ const itemSchema = mongoose.Schema({
     produk_id: { type: String },
     namaproduk: { type: String, required: true },
     harga: { type: Number, required: true },
-    diskon: { type: Number ,required: true},
+    diskon: { type: Number},
     jumlah: { type: Number, required: true }
 });
 
