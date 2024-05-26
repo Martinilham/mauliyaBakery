@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 
 
 const itemSchema = mongoose.Schema({
-    produkid :  { type: ObjectId, required: true },
+    produk_id :  { type: ObjectId, required: true },
     namaproduk: { type: String, required: true },
     harga: { type: Number, required: true },
     diskon: { type: Number,required: true},
