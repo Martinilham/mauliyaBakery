@@ -7,6 +7,7 @@ import mongoose from "mongoose";
 const itemSchema = mongoose.Schema({
     produk_id :  { type: ObjectId, required: true,ref: 'Produk'  },
     namaproduk: { type: String, required: true },
+    kategori: { type: Number, required: true },
     harga: { type: Number, required: true },
     diskon: { type: Number,required: true},
     jumlah: { type: Number, required: true }
