@@ -81,15 +81,6 @@ router.get("/getdata/:id",async(req,res)=>{
     }
 });
   
-// router.patch("/getdata/:id",async(req,res)=>{
-//     try {
-//         const updatedBarang = await Produk.updateOne({_id:req.params.id}, {$set: req.body});
-//         res.status(200).json(updatedBarang);
-//     } catch (error) {
-//         res.status(401).json({status:401,error})
-//     }
-// });
-
 router.put("/getdata/:id", upload.single("photo"), async (req, res) => {
     try {
       let produk = await Produk.findById(req.params.id);
@@ -152,5 +143,28 @@ router.delete("/getdata/:id", async (req, res) => {
   });
   
 
+router.put('/kurangi-stok', async (req, res) => {
+  const { items } = req.body;
+
+  try {
+    for (const item of items) {
+      const product = await Produk.findById(item.produk_id);
+      if (!product) {
+        return res.status(404).json({ message: `Product not found: ${item.produk_id}` });
+      }
+
+      if (product.jumlah < item.jumlah) {
+        return res.status(400).json({ message: `Not enough stock for product: ${product.name}` });
+      }
+
+      product.jumlah -= item.jumlah;
+      await product.save();
+    }
+
+    res.status(200).json({ message: 'Stock reduced successfully' });
+  } catch (error) {
+    res.status(500).json({ message: 'Server error', error: error.message });
+  }
+});  
 
 export default router

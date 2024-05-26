@@ -1,11 +1,13 @@
+import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 
 
 const itemSchema = mongoose.Schema({
+    produkid :  { type: ObjectId, required: true },
     namaproduk: { type: String, required: true },
     harga: { type: Number, required: true },
-    diskon: { type: Number},
+    diskon: { type: Number,required: true},
     jumlah: { type: Number, required: true }
 });
 

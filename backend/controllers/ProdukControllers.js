@@ -7,7 +7,7 @@ import Produk from "../models/produkModels.js";
       }
      
   
-      // Membuat objek produk dari data yang diterima dari body
+ 
       const barang = new Produk({
         namaproduk: req.body.namaproduk,
         deskripsi: req.body.deskripsi,
@@ -15,11 +15,10 @@ import Produk from "../models/produkModels.js";
         jumlah: req.body.jumlah,
         harga: req.body.harga,
         discount: req.body.discount,
-        gambar: req.file.path, // Nama file gambar yang diunggah
+        gambar: req.file.path,
       });
   
       try {
-        // Menyimpan produk ke database
         const insertedBarang = await barang.save();
         res.status(201).json(insertedBarang);
       } catch (error) {
@@ -46,16 +45,6 @@ export const getProdukById = async (req, res) => {
         res.status(404).json({message: error.message});
     }
 }
-
-// export const saveProduk = async (req, res) => {
-//     const barang = new Produk(req.body);
-//     try {
-//         const insertedBarang = await barang.save();
-//         res.status(201).json(insertedBarang);
-//     } catch (error) {
-//         res.status(400).json({message: error.message});
-//     }
-// }
 
 
 export const updateProduk = async (req, res) => {
