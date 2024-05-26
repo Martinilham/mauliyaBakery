@@ -1,10 +1,11 @@
+
 import { ObjectId } from "mongodb";
 import mongoose from "mongoose";
 
 
 
 const itemSchema = mongoose.Schema({
-    produk_id :  { type: ObjectId, required: true },
+    produk_id :  { type: ObjectId, required: true,ref: 'Produk'  },
     namaproduk: { type: String, required: true },
     harga: { type: Number, required: true },
     diskon: { type: Number,required: true},
