@@ -96,7 +96,7 @@ router.put("/getdata/:id", upload.single("photo"), async (req, res) => {
       }
 
       const data = {
-        name: req.body.fname || produk.fname,
+        fname: req.body.fname || produk.fname,
         deskripsi: req.body.deskripsi || produk.deskripsi,
         kategori: req.body.kategori || produk.kategori,
         jumlah: req.body.jumlah || produk.jumlah,
@@ -112,7 +112,35 @@ router.put("/getdata/:id", upload.single("photo"), async (req, res) => {
     }
 });
 
-  
+router.put("/tambahstok/:id", async (req, res) => {
+    try {
+        let produk = await Produk.findById(req.params.id);
+        if (!produk) {
+            return res.status(404).json({ success: false, message: "Product not found" });
+        }
+
+        
+        const additionalStock = parseInt(req.body.jumlah, 10);
+        if (isNaN(additionalStock) || additionalStock <= 0) {
+            return res.status(400).json({ success: false, message: "Invalid stock amount" });
+        }
+
+        
+        produk.jumlah += additionalStock;
+
+        
+        await produk.save();
+
+        res.json(produk);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+});
+
+
+
+
 
 
 router.delete("/getdata/:id", async (req, res) => {

@@ -44,6 +44,24 @@ export const savePesanan = async (req, res) => {
     }
 };
 
+export const updatePembayaran = async(req,res) => {
+    const { statusbayar, } = req.body;
+    try {
+        let produk = await Pesanan.findById(req.params.id);
+        const pesanan = new Pesanan({
+            
+            statusbayar: statusbayar,
+           
+        });
+        await pesanan.save();
+
+        res.json(produk);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+}
+
 
 export const updatePesanan = async (req, res) => {
     try {
