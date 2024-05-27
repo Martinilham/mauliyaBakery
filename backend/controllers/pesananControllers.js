@@ -44,23 +44,40 @@ export const savePesanan = async (req, res) => {
     }
 };
 
-export const updatePembayaran = async(req,res) => {
-    const { statusbayar, } = req.body;
+export const updatePembayaran = async (req, res) => {
+    const { statusbayar } = req.body;
     try {
         let produk = await Pesanan.findById(req.params.id);
-        const pesanan = new Pesanan({
-            
-            statusbayar: statusbayar,
-           
-        });
-        await pesanan.save();
+        if (!produk) {
+            return res.status(404).json({ success: false, message: "Order not found" });
+        }
+        produk.statusbayar = statusbayar;
+        await produk.save();
 
         res.json(produk);
     } catch (err) {
         console.error(err);
         res.status(500).json({ success: false, message: "Internal Server Error" });
     }
-}
+};
+
+
+export const updateDiterima = async (req, res) => {
+    const { statusditerima } = req.body;
+    try {
+        let produk = await Pesanan.findById(req.params.id);
+        if (!produk) {
+            return res.status(404).json({ success: false, message: "Order not found" });
+        }
+        produk.statusditerima = statusditerima;
+        await produk.save();
+
+        res.json(produk);
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ success: false, message: "Internal Server Error" });
+    }
+};
 
 
 export const updatePesanan = async (req, res) => {
