@@ -26,11 +26,11 @@ app.use(pesananRoutes);
 app.use(clientroutes);
 app.use(reviewroutes);
 
-// Proxy endpoint
-app.use('/api/proxy', (req, res) => {
-    const apiUrl = 'https://mauliya-bakeryserve.vercel.app' + req.url;
-    req.pipe(request(apiUrl)).pipe(res);
-});
+// // Proxy endpoint
+// app.use('/api/proxy', (req, res) => {
+//     const apiUrl = 'https://mauliya-bakeryserve.vercel.app' + req.url;
+//     req.pipe(request(apiUrl)).pipe(res);
+// });
 
 app.listen(port, () => {
     console.log(`Server started at port ${port}`);
