@@ -9,7 +9,7 @@ import clientroutes from './routes/clientroutes.js';
 import reviewroutes from './routes/reviewroutes.js';
 import produkRoutes from './routes/produkRoutes.js';
 import Midtrans from './database/midtrands.js';
-import './database/koneksi.js';
+
 
 dotenv.config();
 
@@ -27,7 +27,7 @@ app.use(clientroutes);
 app.use(reviewroutes);
 
 // Proxy endpoint
-app.use('api/proxy/',createProxyMiddleware({
+app.use('api/proxy',createProxyMiddleware({
     target: 'https://maulia-bakeryserver.vercel.app',
     changeOrigin: true,
 }))
