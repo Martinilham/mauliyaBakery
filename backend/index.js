@@ -9,6 +9,7 @@ import clientroutes from './routes/clientroutes.js';
 import reviewroutes from './routes/reviewroutes.js';
 import produkRoutes from './routes/produkRoutes.js';
 import Midtrans from './database/midtrands.js';
+import "./database/koneksi.js"
 
 dotenv.config();
 
