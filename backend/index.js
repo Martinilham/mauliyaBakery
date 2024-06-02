@@ -29,9 +29,6 @@ app.use(reviewroutes);
 app.use('/api/proxy', createProxyMiddleware({
     target: 'https://maulia-bakeryserver.vercel.app',
     changeOrigin: true,
-    onProxyReq: (proxyReq, req, res) => {
-        proxyReq.setHeader('Access-Control-Allow-Origin', '*');
-    }
 }));
 
 app.listen(port, () => {
