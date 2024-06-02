@@ -27,7 +27,7 @@ app.use(clientroutes);
 app.use(reviewroutes);
 
 // Proxy endpoint
-app.use('api/proxy',createProxyMiddleware({
+app.use('api/proxy/',createProxyMiddleware({
     target: 'https://maulia-bakeryserver.vercel.app',
     changeOrigin: true,
 }))
