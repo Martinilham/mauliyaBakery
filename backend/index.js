@@ -1,7 +1,6 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import cors from 'cors';
-import request from 'request';
 import { createProxyMiddleware } from 'http-proxy-middleware';
 import userRoutes from './routes/userRoutes.js';
 import pesananRoutes from './routes/pesananRoutes.js';
@@ -9,7 +8,7 @@ import clientroutes from './routes/clientroutes.js';
 import reviewroutes from './routes/reviewroutes.js';
 import produkRoutes from './routes/produkRoutes.js';
 import Midtrans from './database/midtrands.js';
-
+import './database/koneksi.js'; // Ini mengimport koneksi database dan menjalankannya
 
 dotenv.config();
 
@@ -27,10 +26,10 @@ app.use(clientroutes);
 app.use(reviewroutes);
 
 // Proxy endpoint
-app.use('api/proxy',createProxyMiddleware({
+app.use('/api/proxy', createProxyMiddleware({
     target: 'https://maulia-bakeryserver.vercel.app',
     changeOrigin: true,
-}))
+}));
 
 app.listen(port, () => {
     console.log(`Server started at port ${port}`);
