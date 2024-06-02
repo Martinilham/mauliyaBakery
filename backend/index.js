@@ -26,11 +26,13 @@ app.use(clientroutes);
 app.use(reviewroutes);
 
 
-// Proxy endpoint
-app.use('/api/proxy', (req, res) => {
-    const apiUrl = 'https://maulia-bakeryserver.vercel.app' + req.url;
-    req.pipe(request(apiUrl)).pipe(res);
-});
+app.use('/api/proxy', createProxyMiddleware({
+    target: 'https://maulia-bakeryserver.vercel.app',
+    changeOrigin: true,
+    onProxyReq: (proxyReq, req, res) => {
+        proxyReq.setHeader('Access-Control-Allow-Origin', '*');
+    }
+}));
 
 app.listen(port, () => {
     console.log(`Server started at port ${port}`);
