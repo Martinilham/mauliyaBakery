@@ -28,7 +28,7 @@ app.use(reviewroutes);
 
 // Proxy endpoint
 app.use('/api/proxy', (req, res) => {
-    const apiUrl = 'https://mauliya-bakeryserve.vercel.app' + req.url;
+    const apiUrl = 'https://maulia-bakeryserver.vercel.app/' + req.url;
     req.pipe(request(apiUrl)).pipe(res);
 });
 
